@@ -1,11 +1,14 @@
 
 //required modules
+require("./utils.js");
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
+const path = require('path');
+// const saltRounds = 15;
 
 //number used for encrypting passwords
 const saltRounds = 15;
@@ -51,7 +54,7 @@ app.use(session({
 
 //home page
 app.get('/', (req, res) => {
-    res.send('Hello, World!');
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 //signup page
