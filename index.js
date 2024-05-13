@@ -36,25 +36,30 @@ app.use(express.urlencoded({extended: false}));
 app.set('view engine', 'ejs');
 
 //mongodb set up
-var mongoStore = MongoStore.create({
-	mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/sessions`,
-	crypto: {
-		secret: mongodb_session_secret
-	}
-})
+// var mongoStore = MongoStore.create({
+// 	mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/sessions`,
+// 	crypto: {
+// 		secret: mongodb_session_secret
+// 	}
+// })
 
 //session creation
-app.use(session({ 
-    secret: node_session_secret,
-	store: mongoStore,
-	saveUninitialized: false, 
-	resave: true
-}
-));
+// app.use(session({ 
+//     secret: node_session_secret,
+// 	store: mongoStore,
+// 	saveUninitialized: false, 
+// 	resave: true
+// }
+// ));
+
+//paths for files
+app.use('/css', express.static(__dirname + '/public/css'));
+app.use('/html', express.static(__dirname + '/public/html'));
+app.use('/img', express.static(__dirname + '/public/img'));
 
 //home page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, '/public/html/index.html'));
 });
 
 //signup page
@@ -84,7 +89,7 @@ app.get('/disasterInfo', (req, res) => {
 
 //tsunami info page
 app.get('/tsunami', (req, res) => {
-
+    res.sendFile(path.join(__dirname, '/public/html/tsunami.html'));
 });
 
 //avalanche info page
@@ -94,12 +99,12 @@ app.get('/avalanche', (req, res) => {
 
 //wildfire info page
 app.get('/wildfire', (req, res) => {
-
+    res.sendFile(path.join(__dirname, '/public/html/wildfire.html'));
 });
 
 //earthquake info page
 app.get('/earthquake', (req, res) => {
-
+    res.sendFile(path.join(__dirname, '/public/html/earthquake.html'));
 });
 
 //flood info page
