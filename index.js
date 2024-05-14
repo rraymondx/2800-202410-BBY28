@@ -125,12 +125,16 @@ app.post('/signupSubmit', async (req, res) => {
     if (validationResult.error != null) {
         let errorLabel = validationResult.error.details[0].context.label;
         if (errorLabel == 'username') {
+            //if username is wrong format
             res.redirect('/signup?error=1');
         } else if (errorLabel == 'email') {
+            //if email is in wrong format
             res.redirect('/signup?error=2');
         } else if (errorLabel == 'password') {
+            //if password has wrong format
             res.redirect('/signup?error=3');
         } else {
+            //if somehow something else in joi throws an error
             res.redirect('/signup?error=4');
         }
         return;
@@ -173,12 +177,54 @@ app.post('/signupSubmit', async (req, res) => {
 
 //login page
 app.get('/login', (req, res) => {
-    res.render('login');
+    var errorCode = req.query.error;
+    var errorStrings = ["Email format invalid", "Email does not exist <a href='/signup'>Sign Up?</a>", "Password is incorrect"];
+    res.render('login', {error: errorStrings[errorCode], tempInfo: req.session.tempInfo});
 });
 
 //signup submit, searches for matching emails and pass
 app.post('/loginSubmit', async (req, res) => {
-    res.send('login submit');
+    var email = req.body.email;
+    var password = req.body.password;
+    //store the info in session in case user gets redirected to sign up again so info doesn't have to be reentered
+    req.session.tempInfo = {email: email, password: password};
+    
+    const schema = Joi.string().email().required();
+    const validationResult = schema.validate(email);
+    if (validationResult.error != null) {
+        //if email format is invalid
+        res.redirect("/login?error=0")
+        return;
+    }
+
+    const result = await userCollection.find({ email: email }).project({ email: 1, username: 1, password: 1, _id: 1 }).toArray();
+
+    console.log(result);
+
+    if (result.length != 1) {
+        console.log("email is wrong");
+        //if the email is not found in database
+        res.redirect("/login?error=1");
+        return;
+    }
+
+    if (await bcrypt.compare(password, result[0].password)) {
+        console.log("correct password");
+        req.session.authenticated = true;
+        req.session.username = result[0].username;
+        req.session.email = result[0].email;
+        //get rid of the temp information
+        req.session.tempInfo = undefined;
+        req.session.cookie.maxAge = expireTime;
+
+        res.redirect('/');
+        return;
+    } else {
+        console.log("Invalid email/password combination");
+        //if email is correct but password isn't
+        res.redirect("/login?error=2");
+        return;
+    }
 });
 
 //page containing links to all disaster pages
@@ -214,6 +260,24 @@ app.get('/flood', (req, res) => {
 //smartAI chat page
 app.get('/smartAI', (req, res) => {
 
+});
+
+//forgot password page
+app.get('/forgot-password', (req, res) => {
+    res.render('forgotPassword');
+});
+
+//reset password page
+app.post('/reset-password', (req, res) => {
+    res.render('resetPassword');
+});
+
+//reset password submit
+app.post('/resetPasswordSubmit', (req, res) => {
+    // todo: Implement the logic to reset the password for the given email
+    
+    // redirect to login page
+    res.redirect('/login');
 });
 
 //logout page, destroys session and returns to home page
