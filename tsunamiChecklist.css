@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #2b3a67, #6aaedf); /* ocean-like gradient */
+}
+
+.content {
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: #000000; /* dark gray text for contrast */
+}
+
+/* Basic paragraph stylings*/
+p {
+    
+    background-color: rgb(46, 46, 93);
+    margin-left: 1px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #E4E5E6;
+    color: white;
+    
+}
+
+.paragraph{
+    background-color: rgb(19, 19, 59);
+    border-width: 2px;
+    border-style: solid;
+    border-color: #E4E5E6;
+    color: white;
+    
+}
+
+label{
+    font-weight: bolder;
+}
+
+.header {
+    background: linear-gradient(to right, #00416A, #E4E5E6); /* smooth horizontal gradient */
+    color: white;
+    text-align: center;
+    padding: 0px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* creating depth */
+}
