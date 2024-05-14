@@ -118,6 +118,14 @@ app.get('/smartAI', (req, res) => {
 
 });
 
+app.get('/disasterList', (req, res) => {
+    res.render("disasterList");
+});
+
+app.get('/Checklist', (req, res) => {
+    res.render("Checklist");
+});
+
 //logout page, destroys session and returns to home page
 app.get('/logout', (req, res) => {
     req.session.destroy();
