@@ -36,21 +36,21 @@ app.use(express.urlencoded({extended: false}));
 app.set('view engine', 'ejs');
 
 //mongodb set up
-// var mongoStore = MongoStore.create({
-// 	mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/sessions`,
-// 	crypto: {
-// 		secret: mongodb_session_secret
-// 	}
-// })
+var mongoStore = MongoStore.create({
+	mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/sessions`,
+	crypto: {
+		secret: mongodb_session_secret
+	}
+});
 
 //session creation
-// app.use(session({ 
-//     secret: node_session_secret,
-// 	store: mongoStore,
-// 	saveUninitialized: false, 
-// 	resave: true
-// }
-// ));
+app.use(session({ 
+    secret: node_session_secret,
+	store: mongoStore,
+	saveUninitialized: false, 
+	resave: true
+}
+));
 
 //paths for files
 app.use('/css', express.static(__dirname + '/public/css'));
@@ -64,7 +64,7 @@ app.get('/', (req, res) => {
 
 //signup page
 app.get('/signup', (req, res) => {
-    res.send("Sign Up Page");
+    res.render("signup");
 });
 
 //submit signup and store user in database
@@ -74,7 +74,7 @@ app.post('/signupSubmit', async (req, res) => {
 
 //login page
 app.get('/login', (req, res) => {
-    res.send("login page");
+    res.render('login');
 });
 
 //signup submit, searches for matching emails and pass
