@@ -1,0 +1,32 @@
+
+body {
+    background-color: black;
+}
+
+.text {
+    color: white;
+}
+
+.header {
+    background: linear-gradient(to right, #00416A, #150d3d); /* smooth horizontal gradient */
+    color: white;
+    text-align: center;
+    padding: 0px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* creating depth */
+}
+
+.disasterContent {
+    background-image: url ("../img/tsunami.png");
+    background-color: black;
+}
+
+/*Code to center an object*/
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #414147;
+}

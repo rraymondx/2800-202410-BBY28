@@ -58,8 +58,8 @@ app.use('/html', express.static(__dirname + '/public/html'));
 app.use('/img', express.static(__dirname + '/public/img'));
 
 //home page
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/html/index.html'));
+app.get('/home', (req, res) => {
+    res.render("home");
 });
 
 //signup page
@@ -89,7 +89,8 @@ app.get('/disasterInfo', (req, res) => {
 
 //tsunami info page
 app.get('/tsunami', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/html/tsunami.html'));
+    res.render("tsunami");
+    //res.sendFile(path.join(__dirname, '/public/html/tsunami.html'));
 });
 
 //avalanche info page
