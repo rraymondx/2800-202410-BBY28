@@ -1,0 +1,70 @@
+/* CSS for Flood Page */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #00264D, #4DA6FF, #80CFFF, #B3E0FF, #8B4513);
+}
+
+.header {
+    background: linear-gradient(to right, #00264D, #4DA6FF, #80CFFF, #B3E0FF, #8B4513);
+    color: white;
+    text-align: center;
+    padding: 0px;
+    /* creates depth */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Formatting of the paragraph */
+.content {
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: #ffffff;
+}
+
+.title {
+    margin: auto;   
+    width: 50%;
+    padding: 10px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #000000;
+}
+
+.fancy-button {
+    padding: 10px 20px;
+    background: linear-gradient(to bottom right, #00264D, #4DA6FF, #80CFFF, #B3E0FF, #8B4513);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.fancy-button:hover {
+    background: linear-gradient(to bottom right, #8B4513, #B3E0FF, #80CFFF, #4DA6FF, #00264D);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.fancy-button:active {
+    background: linear-gradient(to bottom right, #4E240D, #6EBCF6, #4F9CCF, #2D7CB5, #001A36);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1);
+}
