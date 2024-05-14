@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #2b3a67, #6aaedf); /* ocean-like gradient */
+    background-color: rgb(6, 5, 22) 
 }
 
 .content {
@@ -37,9 +37,13 @@ label{
 }
 
 .header {
-    background: linear-gradient(to right, #00416A, #E4E5E6); /* smooth horizontal gradient */
+    background: linear-gradient(to right, #00416A, #051321); /* smooth horizontal gradient */
     color: white;
     text-align: center;
     padding: 0px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* creating depth */
+}
+
+label {
+    color: white;
 }
