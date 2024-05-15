@@ -9,6 +9,7 @@ const MongoClient = require("mongodb").MongoClient;
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const path = require('path');
+const nodemailer = require("nodemailer");
 
 // const saltRounds = 15;
 
@@ -57,6 +58,30 @@ app.use(session({
 	resave: true
 }
 ));
+
+//nodemailer setup
+//transporter is going to be an object that is able to send mail
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // Use `true` for port 465, `false` for all other ports
+    auth: {
+        type: "OAuth2",
+        user: "disasternotresetpass@gmail.com",
+        clientId: process.env.OAUTH_CLIENT_ID,
+        clientSecret: process.env.OAUTH_CLIENT_SECRET,
+        refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+        accessToken: process.env.OAUTH_ACCESS_TOKEN
+    },
+  });
+
+  transporter.verify(function (error, success) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Server is ready to take our messages");
+    }
+  });
 
 //refrence to the the user collection in mongodb database
 const userCollection = database.db(mongodb_database).collection('users');
@@ -284,6 +309,20 @@ app.post('/resetPasswordSubmit', (req, res) => {
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');
+});
+
+// test page
+app.get('/testEmail', async (req, res) => {
+    var message = {
+        from: "disasternotresetpass@gmail.com",
+        to: "irfn7pouyan@gmail.com",
+        subject: "Test",
+        text: "pls work pls",
+        html: "<p>aaaaaaaaaaaaaaae</p>",
+      }
+      var info = await transporter.sendMail(message);
+      console.log(info);
+    res.send('This is a test page\n' + info);
 });
 
 //404 page
