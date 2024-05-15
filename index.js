@@ -71,10 +71,12 @@ const transporter = nodemailer.createTransport({
         clientId: process.env.OAUTH_CLIENT_ID,
         clientSecret: process.env.OAUTH_CLIENT_SECRET,
         refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-        accessToken: process.env.OAUTH_ACCESS_TOKEN
+        accessUrl: "https://accounts.google.com/o/oauth2/token"
+        // accessToken: process.env.OAUTH_ACCESS_TOKEN
     },
   });
 
+  //Check if conncetion works
   transporter.verify(function (error, success) {
     if (error) {
       console.log(error);
