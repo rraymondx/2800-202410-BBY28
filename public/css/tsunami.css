@@ -5,6 +5,10 @@ body {
     background: linear-gradient(to bottom, #2b3a67, #6aaedf); /* ocean-like gradient */
 }
 
+.logoname {
+    color: white;
+}
+
 .header {
     background: linear-gradient(to right, #00416A, #E4E5E6); /* smooth horizontal gradient */
     color: white;
