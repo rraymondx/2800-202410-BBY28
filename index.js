@@ -10,6 +10,7 @@ const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const path = require('path');
 const nodemailer = require("nodemailer");
+const crypto = require("crypto");
 
 // const saltRounds = 15;
 
@@ -81,7 +82,7 @@ const transporter = nodemailer.createTransport({
     if (error) {
       console.log(error);
     } else {
-      console.log("Server is ready to take our messages");
+      console.log("nodemailer is ready");
     }
   });
 
@@ -291,18 +292,83 @@ app.get('/smartAI', (req, res) => {
 
 //forgot password page
 app.get('/forgot-password', (req, res) => {
-    res.render('forgotPassword');
+    var errorCode = req.query.error;
+    var errorString = ["Email format invalid", "The Email does not exist"]
+    res.render('forgotPassword', {error: errorString[errorCode]});
+});
+
+//forgot password submit
+app.post('/forgotPasswordSubmit', async (req, res) => {
+    var email = req.body.email;
+
+    const schema = Joi.string().email().required();
+    const validationResult = schema.validate(email);
+    if (validationResult.error != null) {
+        //if email format is invalid
+        res.redirect("/login?error=0")
+        return;
+    }
+
+    if (!(await userExists('email', email))) {
+        res.redirect('/forgot-password?error=1');
+        return;        
+    }
+
+    
+    var resetPassId = crypto.randomBytes(20).toString('hex');
+    var idExpireTime = Date.now() + expireTime; //1 hour expire time
+    await userCollection.updateOne({email: email}, {$set: {resetPassId: resetPassId, resetPassIdExpireTime: idExpireTime}});
+
+    var message = {
+        from: "disasternotresetpass@gmail.com",
+        to: email,
+        subject: "Reset your password",
+        // text: "pls work pls",
+        //need to change this link when deploying
+        html: `<p>follow this link to reset your password: <a href='http://localhost:${process.env.PORT}/reset-password?id=${resetPassId}'>Link</a></p>`
+        
+      }
+
+      var info = await transporter.sendMail(message);
+      console.log(info);
+    res.redirect('/login');
 });
 
 //reset password page
-app.post('/reset-password', (req, res) => {
-    res.render('resetPassword');
+app.get('/reset-password', async (req, res) => {
+    var id = req.query.id;
+    //todo: check that the id of the email sent is the same as the email
+    const result = await userCollection.findOne({resetPassId: id});
+    if (result == null) {
+        res.send('user does not exist');
+        return;
+    }
+    const expireTime = result.resetPassIdExpireTime;
+    if (expireTime < Date.now) {
+        res.send('link expired');
+    }
+    console.log(expireTime);
+    res.render('resetPassword', {user: result.username});
 });
 
 //reset password submit
-app.post('/resetPasswordSubmit', (req, res) => {
-    // todo: Implement the logic to reset the password for the given email
-    
+app.post('/resetPasswordSubmit', async (req, res) => {
+    var { username, newPassword, confirmPassword } = req.body;
+    //Checks that the password is confirmed
+    if (newPassword !== confirmPassword) {
+        res.send('passwords arent equal');
+        return;
+    }
+
+    //validation using joi
+    const schema = Joi.string().max(20).required();
+    const validationResult = schema.validate(newPassword);
+    if (validationResult.error != null) {
+        res.send('bad password format');
+        return;
+    }
+    var hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+    await userCollection.updateOne({username: username}, {$set: {password: hashedPassword}});
     // redirect to login page
     res.redirect('/login');
 });
@@ -314,7 +380,7 @@ app.get('/logout', (req, res) => {
 });
 
 // test page
-app.get('/testEmail', async (req, res) => {
+app.get('/test', async (req, res) => {
     var message = {
         from: "disasternotresetpass@gmail.com",
         to: "irfn7pouyan@gmail.com",
