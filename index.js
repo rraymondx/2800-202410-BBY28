@@ -286,6 +286,10 @@ app.get('/flood', (req, res) => {
 
 });
 
+app.get('/tornado', (req, res) => {
+    res.render("tornado");
+});
+
 //smartAI chat page
 app.get('/smartAI', (req, res) => {
 
