@@ -278,7 +278,7 @@ app.get('/wildfire', (req, res) => {
 
 //earthquake info page
 app.get('/earthquake', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/html/earthquake.html'));
+    res.render("earthquake");
 });
 
 //flood info page
