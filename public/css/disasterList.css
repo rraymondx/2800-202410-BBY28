@@ -1,0 +1,41 @@
+
+.header {
+    background: linear-gradient(to right, #00416A, #051321); /* smooth horizontal gradient */
+    color: white;
+    text-align: center;
+    padding: 0px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* creating depth */
+}
+
+.body {
+    background-color: rgb(6, 5, 22)
+}
+
+.text {
+    color: white;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-gap: 10px; /* spacing between grid items */
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #363abd;
+    border: 1px solid #ccc;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.grid-item:hover {
+    background-color: #e0e0e0;
+}
+
+.grid-item img {
+    max-width: 100%;
+    max-height: 100%;
+}

@@ -1,0 +1,36 @@
+<%- include("./templates/header") %>
+
+<form action="/signupSubmit" method="post">
+    <label for="username">Username:</label>
+    <input type="text" name="username" placeholder="ExampleUsername"
+    <% if(tempInfo){ %>
+        value="<%=tempInfo.username%>"
+    <% } %>
+    required><br>
+    <label for="email">Email:</label>
+    <input type="email" name="email" placeholder="example@email.com" 
+    <% if(tempInfo){ %>
+        value="<%=tempInfo.email%>"
+    <% } %>
+    required><br>
+    <label for="password">Password:</label>
+    <input type="password" name="password" placeholder="ExamplePassword" 
+    <% if(tempInfo){ %>
+        value="<%=tempInfo.password%>"
+    <% } %>
+    required><br>
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" name="confirmPassword" placeholder="ExamplePassword" 
+    <% if(tempInfo){ %>
+        value="<%=tempInfo.confirmPassword%>"
+    <% } %>
+    required><br>
+    <% if(error) { %>
+        <%=error%><br>
+    <% } %>
+    <button type="submit">Submit</button>
+</form>
+
+
+
+<%- include("./templates/footer") %>
