@@ -269,6 +269,8 @@ app.get('/tsunami', (req, res) => {
 //avalanche info page
 app.get('/avalanche', (req, res) => {
 
+    res.render("avalanche");
+
 });
 
 //wildfire info page
