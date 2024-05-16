@@ -12,8 +12,6 @@ const path = require('path');
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 
-// const saltRounds = 15;
-
 //number used for encrypting passwords
 const saltRounds = 15;
 
@@ -34,7 +32,7 @@ const mongodb_session_secret = process.env.MONGODB_SESSION_SECRET;
 const node_session_secret = process.env.NODE_SESSION_SECRET;
 
 //allows parsing body
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
 //setup for ejs
 app.set('view engine', 'ejs');
@@ -45,18 +43,18 @@ const atlasURI = `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_ho
 //mongodb set up
 var database = new MongoClient(`${atlasURI}/?retryWrites=true`);
 var mongoStore = MongoStore.create({
-	mongoUrl: `${atlasURI}${mongodb_database}`,
-	crypto: {
-		secret: mongodb_session_secret
-	}
+    mongoUrl: `${atlasURI}${mongodb_database}`,
+    crypto: {
+        secret: mongodb_session_secret
+    }
 });
 
 //session creation
-app.use(session({ 
+app.use(session({
     secret: node_session_secret,
-	store: mongoStore,
-	saveUninitialized: false, 
-	resave: true
+    store: mongoStore,
+    saveUninitialized: false,
+    resave: true
 }
 ));
 
@@ -75,16 +73,16 @@ const transporter = nodemailer.createTransport({
         accessUrl: "https://accounts.google.com/o/oauth2/token"
         // accessToken: process.env.OAUTH_ACCESS_TOKEN
     },
-  });
+});
 
-  //Check if conncetion works
-  transporter.verify(function (error, success) {
+//Check if conncetion works
+transporter.verify(function (error, success) {
     if (error) {
-      console.log(error);
+        console.log(error);
     } else {
-      console.log("nodemailer is ready");
+        console.log("nodemailer is ready");
     }
-  });
+});
 
 //refrence to the the user collection in mongodb database
 const userCollection = database.db(mongodb_database).collection('users');
@@ -98,10 +96,10 @@ async function userExists(filterName, filterValue) {
 }
 
 //returns an onject that shows if username and email are duplicated
-async function checkDuplicateUser(username, email){
-    var searchUsername = await userCollection.findOne({username: username});
-    var searchEmail = await userCollection.findOne({email: email});
-    var result = {usernameDuplicate: !(searchUsername == null), emailDuplicate: !(searchEmail == null)};
+async function checkDuplicateUser(username, email) {
+    var searchUsername = await userCollection.findOne({ username: username });
+    var searchEmail = await userCollection.findOne({ email: email });
+    var result = { usernameDuplicate: !(searchUsername == null), emailDuplicate: !(searchEmail == null) };
     return result;
 }
 
@@ -109,6 +107,24 @@ async function checkDuplicateUser(username, email){
 app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/html', express.static(__dirname + '/public/html'));
 app.use('/img', express.static(__dirname + '/public/img'));
+
+app.use('/', (req, res, next) => {
+    var currUrl = req.url;
+    if (currUrl == '/') {
+        app.locals.cssFile = 'index.css'
+        next();
+        return;
+    } else if (currUrl == '/css' || currUrl == '/html' || currUrl == '/img') {
+        next();
+        return;
+    } else {
+        const parts = currUrl.split('/');
+        const lastPart = parts[parts.length - 1];
+        app.locals.cssFile = lastPart + '.css';
+        // app.locals.cssFile =  cssFiles[req.url];
+    }
+    next();
+});
 
 //home page
 app.get('/', (req, res) => {
@@ -123,7 +139,7 @@ app.get('/signup', (req, res) => {
     var errorStrings = ["Passwords don't match", 'Invalid Username', "Invalid Email", "Invalid Password", "Something went wrong", "Username and Email already exist", "Email already exists", "Username already exists"];
     //stores the temp information
     var tempInfo = req.session.tempInfo;
-    res.render("signup", {error: errorStrings[errorCode], tempInfo: tempInfo});
+    res.render("signup", { error: errorStrings[errorCode], tempInfo: tempInfo });
 });
 
 //submit signup and store user in database
@@ -134,8 +150,8 @@ app.post('/signupSubmit', async (req, res) => {
     var password = req.body.password;
     var confirmPassword = req.body.confirmPassword;
     //store the info in session in case user gets redirected to sign up again so info doesn't have to be reentered
-    req.session.tempInfo = {username: username, email: email, password: password, confirmPassword: confirmPassword};
-    
+    req.session.tempInfo = { username: username, email: email, password: password, confirmPassword: confirmPassword };
+
     //Checks that the password is confirmed
     if (password !== confirmPassword) {
         res.redirect('/signup?error=0');
@@ -207,7 +223,7 @@ app.post('/signupSubmit', async (req, res) => {
 app.get('/login', (req, res) => {
     var errorCode = req.query.error;
     var errorStrings = ["Email format invalid", "Email does not exist <a href='/signup'>Sign Up?</a>", "Password is incorrect"];
-    res.render('login', {error: errorStrings[errorCode], tempInfo: req.session.tempInfo});
+    res.render('login', { error: errorStrings[errorCode], tempInfo: req.session.tempInfo });
 });
 
 //signup submit, searches for matching emails and pass
@@ -215,8 +231,8 @@ app.post('/loginSubmit', async (req, res) => {
     var email = req.body.email;
     var password = req.body.password;
     //store the info in session in case user gets redirected to sign up again so info doesn't have to be reentered
-    req.session.tempInfo = {email: email, password: password};
-    
+    req.session.tempInfo = { email: email, password: password };
+
     const schema = Joi.string().email().required();
     const validationResult = schema.validate(email);
     if (validationResult.error != null) {
@@ -306,7 +322,7 @@ app.get('/Checklist', (req, res) => {
 app.get('/forgot-password', (req, res) => {
     var errorCode = req.query.error;
     var errorString = ["Email format invalid", "The Email does not exist"]
-    res.render('forgotPassword', {error: errorString[errorCode]});
+    res.render('forgotPassword', { error: errorString[errorCode] });
 });
 
 //forgot password submit
@@ -323,13 +339,13 @@ app.post('/forgotPasswordSubmit', async (req, res) => {
 
     if (!(await userExists('email', email))) {
         res.redirect('/forgot-password?error=1');
-        return;        
+        return;
     }
 
-    
+
     var resetPassId = crypto.randomBytes(20).toString('hex');
     var idExpireTime = Date.now() + expireTime; //1 hour expire time
-    await userCollection.updateOne({email: email}, {$set: {resetPassId: resetPassId, resetPassIdExpireTime: idExpireTime}});
+    await userCollection.updateOne({ email: email }, { $set: { resetPassId: resetPassId, resetPassIdExpireTime: idExpireTime } });
 
     var message = {
         from: "disasternotresetpass@gmail.com",
@@ -338,11 +354,11 @@ app.post('/forgotPasswordSubmit', async (req, res) => {
         // text: "pls work pls",
         //need to change this link when deploying
         html: `<p>follow this link to reset your password: <a href='http://localhost:${process.env.PORT}/reset-password?id=${resetPassId}'>Link</a></p>`
-        
-      }
 
-      var info = await transporter.sendMail(message);
-      console.log(info);
+    }
+
+    var info = await transporter.sendMail(message);
+    console.log(info);
     res.redirect('/login');
 });
 
@@ -350,7 +366,7 @@ app.post('/forgotPasswordSubmit', async (req, res) => {
 app.get('/reset-password', async (req, res) => {
     var id = req.query.id;
     //todo: check that the id of the email sent is the same as the email
-    const result = await userCollection.findOne({resetPassId: id});
+    const result = await userCollection.findOne({ resetPassId: id });
     if (result == null) {
         res.send('user does not exist');
         return;
@@ -360,7 +376,7 @@ app.get('/reset-password', async (req, res) => {
         res.send('link expired');
     }
     console.log(expireTime);
-    res.render('resetPassword', {user: result.username});
+    res.render('resetPassword', { user: result.username });
 });
 
 //reset password submit
@@ -380,7 +396,7 @@ app.post('/resetPasswordSubmit', async (req, res) => {
         return;
     }
     var hashedPassword = await bcrypt.hash(newPassword, saltRounds);
-    await userCollection.updateOne({username: username}, {$set: {password: hashedPassword}});
+    await userCollection.updateOne({ username: username }, { $set: { password: hashedPassword } });
     // redirect to login page
     res.redirect('/login');
 });
@@ -399,9 +415,9 @@ app.get('/test', async (req, res) => {
         subject: "Test",
         text: "pls work pls",
         html: "<p>aaaaaaaaaaaaaaae</p>",
-      }
-      var info = await transporter.sendMail(message);
-      console.log(info);
+    }
+    var info = await transporter.sendMail(message);
+    console.log(info);
     res.send('This is a test page\n' + info);
 });
 

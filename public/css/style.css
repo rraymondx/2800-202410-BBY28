@@ -1,0 +1,13 @@
+/* Univesal style */
+
+.container {
+    background-color: rgb(18, 5, 71);
+}
+
+body {
+    background-color: black;
+}
+
+.text {
+    color: white;
+}
