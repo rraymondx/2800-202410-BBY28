@@ -283,7 +283,7 @@ app.get('/earthquake', (req, res) => {
 
 //flood info page
 app.get('/flood', (req, res) => {
-
+    res.render('flood');
 });
 
 app.get('/tornado', (req, res) => {
