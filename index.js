@@ -126,9 +126,16 @@ app.use('/', (req, res, next) => {
     next();
 });
 
+
+
 //home page
 app.get('/', (req, res) => {
-    res.render("home");
+    if (!req.session.authenticated) {
+         res.redirect("login");
+    } else {
+        res.render("home");
+    }
+    
 });
 
 //signup page
@@ -271,18 +278,39 @@ app.post('/loginSubmit', async (req, res) => {
     }
 });
 
+//Code to check if the session is validated
+function isValidSession(req) {
+    if (req.session.authenticated) {
+        return true;
+    }
+    return false;
+}
+
+function sessionValidation(req,res,next) {
+    if (isValidSession(req)) {
+        next();
+    }
+    else {
+        res.redirect('/login');
+    }
+}
+
+
+
 //page containing links to all disaster pages
 app.get('/disasterInfo', (req, res) => {
 
 });
 
 //tsunami info page
+app.use('/tsunami', sessionValidation);
 app.get('/tsunami', (req, res) => {
     res.render("tsunami");
     //res.sendFile(path.join(__dirname, '/public/html/tsunami.html'));
 });
 
 //avalanche info page
+app.use('/avalanche', sessionValidation);
 app.get('/avalanche', (req, res) => {
 
     res.render("avalanche");
@@ -290,21 +318,26 @@ app.get('/avalanche', (req, res) => {
 });
 
 //wildfire info page
+app.use('/wildfire', sessionValidation);
 app.get('/wildfire', (req, res) => {
     // res.sendFile(path.join(__dirname, '/public/html/wildfire.html'));
     res.render('wildfire');
 });
 
 //earthquake info page
+app.use('/earthquake', sessionValidation);
 app.get('/earthquake', (req, res) => {
     res.render("earthquake");
 });
 
 //flood info page
+app.use('/flood', sessionValidation);
 app.get('/flood', (req, res) => {
     res.render('flood');
 });
 
+//Tornado Info Page
+app.use('/tornado', sessionValidation);
 app.get('/tornado', (req, res) => {
     res.render("tornado");
 });
@@ -314,10 +347,14 @@ app.get('/smartAI', (req, res) => {
 
 });
 
+//A page that holds the list of disasters
+app.use('/disasterList', sessionValidation);
 app.get('/disasterList', (req, res) => {
     res.render("disasterList");
 });
 
+//A catch-all checklist for disasters
+app.use('/Checklist', sessionValidation);
 app.get('/Checklist', (req, res) => {
     res.render("Checklist");
 });
