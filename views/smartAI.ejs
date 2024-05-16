@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>SmartAI</title>
+    <link rel="stylesheet" href="../public/css/smartAI.css">
 </head>
 
 <body>
     <%- include("templates/header") %>
 
-    
-
+    <div id="chat-window">
+        <div class="main-title">Smart AI</div>
+        <div id="chat-messages"></div>
+        <form id="chat-form">
+            <input type="text" id="chat-input" autocomplete="off" placeholder="Type your message here..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="smartAI.js"></script>
     <%- include("templates/footer") %>
 </body>
 </html>
