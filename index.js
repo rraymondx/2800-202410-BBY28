@@ -289,7 +289,8 @@ app.get('/avalanche', (req, res) => {
 
 //wildfire info page
 app.get('/wildfire', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/html/wildfire.html'));
+    // res.sendFile(path.join(__dirname, '/public/html/wildfire.html'));
+    res.render('wildfire');
 });
 
 //earthquake info page
