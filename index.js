@@ -255,6 +255,43 @@ app.post('/loginSubmit', async (req, res) => {
     }
 });
 
+// Profile page
+app.get('/profile', async (req, res) => {
+    if (!req.session.authenticated) {
+        res.redirect('/login');
+        return;
+    }
+
+    const user = await userCollection.findOne({ email: req.session.email });
+    res.render('profile', { user: user });
+});
+
+// Profile update
+app.post('/profileSubmit', async (req, res) => {
+    if (!req.session.authenticated) {
+        res.redirect('/login');
+        return;
+    }
+
+    const { username, email, city } = req.body;
+
+    if (!username || !email) {
+        res.redirect('/profile');
+        return;
+    }
+
+    const filter = { email: req.session.email };
+    const update = { $set: { username: username, email: email, city: city } };
+
+    await userCollection.updateOne(filter, update);
+
+    // Update session info
+    req.session.username = username;
+    req.session.email = email;
+
+    res.redirect('/profile');
+});
+
 //page containing links to all disaster pages
 app.get('/disasterInfo', (req, res) => {
 
