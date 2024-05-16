@@ -11,6 +11,7 @@ const Joi = require('joi');
 const path = require('path');
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
+const { Configuration, OpenAIApi } = require("openai");
 
 //number used for encrypting passwords
 const saltRounds = 15;
@@ -344,7 +345,7 @@ app.get('/tornado', (req, res) => {
 
 //smartAI chat page
 app.get('/smartAI', (req, res) => {
-
+    res.render('smartAI');
 });
 
 //A page that holds the list of disasters
