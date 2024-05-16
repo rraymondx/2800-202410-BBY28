@@ -58,3 +58,34 @@ dd > a{
     border-style: solid;
     border-color: #000000;
 }
+
+/* Code for the predict button*/
+.fancy-button {
+    padding: 10px 20px; /* Padding around the text */
+    background: linear-gradient(45deg, #df0c0c, #e98330); /* Diagonal gradient from purple to blue */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 25px; /* Rounded corners */
+    font-size: 1.2em; /* Larger font size */
+    font-weight: bold; /* Bold font weight */
+    text-transform: uppercase; /* Uppercase text */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.fancy-button:hover {
+    background: linear-gradient(45deg, #e98330, #df0c0c); /* Reverse gradient on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
+}
+
+.fancy-button:active {
+    background: linear-gradient(45deg, #FF4500, #FFA500); /* Darker gradient on click */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Less shadow on click */
+    transform: scale(1); /* Reset scale on click */
+}
