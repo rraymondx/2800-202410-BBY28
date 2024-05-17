@@ -1,27 +1,24 @@
 <%- include("./templates/header") %>
-
-<form action="/loginSubmit" method="post">
-    <label for="email">Email:</label>
-    <input type="email" name="email" placeholder="example@email.com" 
-    <% if (tempInfo) { %>
+    <form action="/loginSubmit" method="post">
+        <label for="email">Email:</label>
+        <input type="email" name="email" placeholder="example@email.com" <% if (tempInfo) { %>
         value="<%=tempInfo.email%>"
-    <% } %> 
-    required><br>
-    <label for="password">Password:</label>
-    <input type="password" name="password" placeholder="password" 
-    <% if (tempInfo) { %>
-        value="<%=tempInfo.password%>"
-    <% } %> 
-    required><br>
-    <% if(error) { %>
-        <%-error%><br>
-    <% } %>
-    <a href="/forgot-password">Forgot password?</a><br>
-    <button type="submit">Submit</button>
-</form>
+            <% } %>
+                required><br>
+                <label for="password">Password:</label>
+                <input type="password" name="password" placeholder="password" <% if (tempInfo) { %>
+                value="<%=tempInfo.password%>"
+                    <% } %>
+                        required><br>
+                        <% if(error) { %>
+                            <%-error%><br>
+                                <% } %>
+                                    <a href="/forgot-password">Forgot password?</a><br>
+                                    <button type="submit">Submit</button>
+    </form>
 
-<a href = "/signup">
-    <button>Sign Up</button>
-</a>
+    <a href="/signup">
+        <button>Sign Up</button>
+    </a>
 
 <%- include("./templates/footer") %>
