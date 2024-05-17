@@ -9,6 +9,7 @@ const MongoClient = require("mongodb").MongoClient;
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const path = require('path');
+const url = require('url');
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const { Configuration, OpenAIApi } = require("openai");
@@ -129,7 +130,7 @@ app.use('/img', express.static(__dirname + '/public/img'));
 
 // root
 app.use('/', (req, res, next) => {
-    var currUrl = req.url;
+    var currUrl = url.parse(req.url).pathname;
     if (currUrl == '/') {
         app.locals.cssFile = 'index.css'
         next();
@@ -437,6 +438,10 @@ app.post('/forgotPasswordSubmit', async (req, res) => {
 //reset password page
 app.get('/reset-password', async (req, res) => {
     var id = req.query.id;
+    if(!id) {
+        res.send('no id for reset password');
+        return;
+    }
     //todo: check that the id of the email sent is the same as the email
     const result = await userCollection.findOne({ resetPassId: id });
     if (result == null) {
