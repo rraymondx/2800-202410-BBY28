@@ -39,6 +39,10 @@ body {
     border-color: #000000;
 }
 
+.content dd {
+    margin-left: 40px; 
+}
+
 .fancy-button {
     padding: 10px 20px;
     background: linear-gradient(to bottom right, #00264D, #4DA6FF, #80CFFF, #B3E0FF, #8B4513);
