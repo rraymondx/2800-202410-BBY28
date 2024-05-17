@@ -355,8 +355,7 @@ app.post('/profileSubmit', async (req, res) => {
 
     res.redirect('/profile');
 });
-    }
-    }
+
 
 //page containing links to all disaster pages
 app.get('/disasterInfo', (req, res) => {
