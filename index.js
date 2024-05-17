@@ -12,7 +12,6 @@ const path = require('path');
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const { Configuration, OpenAIApi } = require("openai");
-const openAIKey = process.env.OPEN_AI_KEY;
 
 //number used for encrypting passwords
 const saltRounds = 15;
@@ -347,6 +346,7 @@ app.get('/tornado', (req, res) => {
 
 //smartAI chat page
 app.get('/smartAI', (req, res) => {
+    app.locals.open_ai_key = process.env.OPEN_AI_KEY;
     res.render('smartAI');
 });
 

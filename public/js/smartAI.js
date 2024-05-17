@@ -2,7 +2,6 @@
 const form = document.getElementById("chat-form");
 const input = document.getElementById("chat-input");
 const messages = document.getElementById("chat-messages");
-const openAIKey = window.openAIKey;
 
 form.addEventListener("submit", async (e) => {
     // to prevent any default behaviors with the event => (e)
