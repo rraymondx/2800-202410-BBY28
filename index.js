@@ -13,16 +13,19 @@ const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const { Configuration, OpenAIApi } = require("openai");
 
+
 //number used for encrypting passwords
 const saltRounds = 15;
 
+
 //port address
 const port = process.env.PORT || 3000;
-
 const app = express();
+
 
 //expire time for session (1 hour)
 const expireTime = 1 * 60 * 60 * 1000;
+
 
 //secret info stored in env
 const mongodb_host = process.env.MONGODB_HOST;
@@ -32,14 +35,18 @@ const mongodb_database = process.env.MONGODB_DATABASE;
 const mongodb_session_secret = process.env.MONGODB_SESSION_SECRET;
 const node_session_secret = process.env.NODE_SESSION_SECRET;
 
+
 //allows parsing body
 app.use(express.urlencoded({ extended: false }));
+
 
 //setup for ejs
 app.set('view engine', 'ejs');
 
+
 //the atlas URI
 const atlasURI = `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/`
+
 
 //mongodb set up
 var database = new MongoClient(`${atlasURI}/?retryWrites=true`);
@@ -50,6 +57,7 @@ var mongoStore = MongoStore.create({
     }
 });
 
+
 //session creation
 app.use(session({
     secret: node_session_secret,
@@ -58,6 +66,7 @@ app.use(session({
     resave: true
 }
 ));
+
 
 //nodemailer setup
 //transporter is going to be an object that is able to send mail
@@ -76,6 +85,7 @@ const transporter = nodemailer.createTransport({
     },
 });
 
+
 //Check if conncetion works
 transporter.verify(function (error, success) {
     if (error) {
@@ -85,8 +95,10 @@ transporter.verify(function (error, success) {
     }
 });
 
+
 //refrence to the the user collection in mongodb database
 const userCollection = database.db(mongodb_database).collection('users');
+
 
 //returns true if a user exists based on a filter
 async function userExists(filterName, filterValue) {
@@ -96,6 +108,7 @@ async function userExists(filterName, filterValue) {
     return !(searchUser == null);
 }
 
+
 //returns an onject that shows if username and email are duplicated
 async function checkDuplicateUser(username, email) {
     var searchUsername = await userCollection.findOne({ username: username });
@@ -104,12 +117,17 @@ async function checkDuplicateUser(username, email) {
     return result;
 }
 
-//paths for files
+
+//allows use of photos stored in public
+app.use(express.static(__dirname + "/public"));
+// static paths for routing files
 app.use('/js', express.static(__dirname + '/public/js'));
 app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/html', express.static(__dirname + '/public/html'));
 app.use('/img', express.static(__dirname + '/public/img'));
 
+
+// root
 app.use('/', (req, res, next) => {
     var currUrl = req.url;
     if (currUrl == '/') {
@@ -129,16 +147,15 @@ app.use('/', (req, res, next) => {
 });
 
 
-
 //home page
 app.get('/', (req, res) => {
     if (!req.session.authenticated) {
-         res.redirect("login");
+        res.redirect("login");
     } else {
         res.render("home");
     }
-    
 });
+
 
 //signup page
 app.get('/signup', (req, res) => {
@@ -151,6 +168,7 @@ app.get('/signup', (req, res) => {
     res.render("signup", { error: errorStrings[errorCode], tempInfo: tempInfo });
 });
 
+
 //submit signup and store user in database
 app.post('/signupSubmit', async (req, res) => {
     //get the information from the form
@@ -160,7 +178,6 @@ app.post('/signupSubmit', async (req, res) => {
     var confirmPassword = req.body.confirmPassword;
     //store the info in session in case user gets redirected to sign up again so info doesn't have to be reentered
     req.session.tempInfo = { username: username, email: email, password: password, confirmPassword: confirmPassword };
-
     //Checks that the password is confirmed
     if (password !== confirmPassword) {
         res.redirect('/signup?error=0');
@@ -174,7 +191,9 @@ app.post('/signupSubmit', async (req, res) => {
             email: Joi.string().email().required(),
             password: Joi.string().max(20).required()
         });
+
     const validationResult = schema.validate({ username, email, password });
+
     if (validationResult.error != null) {
         let errorLabel = validationResult.error.details[0].context.label;
         if (errorLabel == 'username') {
@@ -228,12 +247,14 @@ app.post('/signupSubmit', async (req, res) => {
     res.redirect("/");
 });
 
+
 //login page
 app.get('/login', (req, res) => {
     var errorCode = req.query.error;
     var errorStrings = ["Email format invalid", "Email does not exist <a href='/signup'>Sign Up?</a>", "Password is incorrect"];
     res.render('login', { error: errorStrings[errorCode], tempInfo: req.session.tempInfo });
 });
+
 
 //signup submit, searches for matching emails and pass
 app.post('/loginSubmit', async (req, res) => {
@@ -269,7 +290,6 @@ app.post('/loginSubmit', async (req, res) => {
         //get rid of the temp information
         req.session.tempInfo = undefined;
         req.session.cookie.maxAge = expireTime;
-
         res.redirect('/');
         return;
     } else {
@@ -280,6 +300,7 @@ app.post('/loginSubmit', async (req, res) => {
     }
 });
 
+
 //Code to check if the session is validated
 function isValidSession(req) {
     if (req.session.authenticated) {
@@ -288,7 +309,8 @@ function isValidSession(req) {
     return false;
 }
 
-function sessionValidation(req,res,next) {
+
+function sessionValidation(req, res, next) {
     if (isValidSession(req)) {
         next();
     }
@@ -298,33 +320,32 @@ function sessionValidation(req,res,next) {
 }
 
 
-
 //page containing links to all disaster pages
 app.get('/disasterInfo', (req, res) => {
-
+    // res.render();
 });
+
 
 //tsunami info page
 app.use('/tsunami', sessionValidation);
 app.get('/tsunami', (req, res) => {
     res.render("tsunami");
-    //res.sendFile(path.join(__dirname, '/public/html/tsunami.html'));
 });
+
 
 //avalanche info page
 app.use('/avalanche', sessionValidation);
 app.get('/avalanche', (req, res) => {
-
     res.render("avalanche");
-
 });
+
 
 //wildfire info page
 app.use('/wildfire', sessionValidation);
 app.get('/wildfire', (req, res) => {
-    // res.sendFile(path.join(__dirname, '/public/html/wildfire.html'));
     res.render('wildfire');
 });
+
 
 //earthquake info page
 app.use('/earthquake', sessionValidation);
@@ -332,11 +353,13 @@ app.get('/earthquake', (req, res) => {
     res.render("earthquake");
 });
 
+
 //flood info page
 app.use('/flood', sessionValidation);
 app.get('/flood', (req, res) => {
     res.render('flood');
 });
+
 
 //Tornado Info Page
 app.use('/tornado', sessionValidation);
@@ -344,11 +367,14 @@ app.get('/tornado', (req, res) => {
     res.render("tornado");
 });
 
+
 //smartAI chat page
 app.get('/smartAI', (req, res) => {
+    // used for sending server variable to client side
     app.locals.open_ai_key = process.env.OPEN_AI_KEY;
     res.render('smartAI');
 });
+
 
 //A page that holds the list of disasters
 app.use('/disasterList', sessionValidation);
@@ -356,17 +382,21 @@ app.get('/disasterList', (req, res) => {
     res.render("disasterList");
 });
 
+
 //A catch-all checklist for disasters
 app.use('/checklist', sessionValidation);
 app.get('/checklist', (req, res) => {
     res.render("checklist");
 });
+
+
 //forgot password page
 app.get('/forgot-password', (req, res) => {
     var errorCode = req.query.error;
     var errorString = ["Email format invalid", "The Email does not exist"]
     res.render('forgotPassword', { error: errorString[errorCode] });
 });
+
 
 //forgot password submit
 app.post('/forgotPasswordSubmit', async (req, res) => {
@@ -385,7 +415,6 @@ app.post('/forgotPasswordSubmit', async (req, res) => {
         return;
     }
 
-
     var resetPassId = crypto.randomBytes(20).toString('hex');
     var idExpireTime = Date.now() + expireTime; //1 hour expire time
     await userCollection.updateOne({ email: email }, { $set: { resetPassId: resetPassId, resetPassIdExpireTime: idExpireTime } });
@@ -397,13 +426,13 @@ app.post('/forgotPasswordSubmit', async (req, res) => {
         // text: "pls work pls",
         //need to change this link when deploying
         html: `<p>follow this link to reset your password: <a href='http://localhost:${process.env.PORT}/reset-password?id=${resetPassId}'>Link</a></p>`
-
     }
 
     var info = await transporter.sendMail(message);
     console.log(info);
     res.redirect('/login');
 });
+
 
 //reset password page
 app.get('/reset-password', async (req, res) => {
@@ -422,6 +451,7 @@ app.get('/reset-password', async (req, res) => {
     res.render('resetPassword', { user: result.username });
 });
 
+
 //reset password submit
 app.post('/resetPasswordSubmit', async (req, res) => {
     var { username, newPassword, confirmPassword } = req.body;
@@ -430,7 +460,6 @@ app.post('/resetPasswordSubmit', async (req, res) => {
         res.send('passwords arent equal');
         return;
     }
-
     //validation using joi
     const schema = Joi.string().max(20).required();
     const validationResult = schema.validate(newPassword);
@@ -444,11 +473,13 @@ app.post('/resetPasswordSubmit', async (req, res) => {
     res.redirect('/login');
 });
 
+
 //logout page, destroys session and returns to home page
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');
 });
+
 
 // test page
 app.get('/test', async (req, res) => {
@@ -464,14 +495,13 @@ app.get('/test', async (req, res) => {
     res.send('This is a test page\n' + info);
 });
 
+
 //404 page
 app.get('*', (req, res) => {
     res.status(404);
     res.send("Page Not Found - 404");
 });
 
-//allows use of photos stored in public
-app.use(express.static(__dirname + "/public"));
 
 //localhost set up
 app.listen(port, () => {
