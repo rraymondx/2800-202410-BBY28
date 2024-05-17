@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script>
+        function enableEditing() {
+            document.getElementById('username').disabled = false;
+            document.getElementById('email').disabled = false;
+            document.getElementById('city').disabled = false;
+            document.getElementById('edit-btn').style.display = 'none';
+            document.getElementById('save-btn').style.display = 'inline';
+        }
+
+        function disableEditing() {
+            document.getElementById('username').disabled = true;
+            document.getElementById('email').disabled = true;
+            document.getElementById('city').disabled = true;
+            document.getElementById('edit-btn').style.display = 'inline';
+            document.getElementById('save-btn').style.display = 'none';
+        }
+
+        function handleFormSubmit(event) {
+            enableEditing(); // Ensure fields are enabled before submitting
+        }
+    </script>
+</head>
+<body>
+    <%- include("templates/header") %>
+    <h1>Profile</h1>
+    <form action="/profileSubmit" method="post" onsubmit="handleFormSubmit(event)">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" value="<%= user.username %>" disabled>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="<%= user.email %>" disabled>
+        </div>
+        <div>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" value="<%= user.city %>" disabled>
+        </div>
+        <button type="button" id="edit-btn" onclick="enableEditing()">Edit</button>
+        <button type="submit" id="save-btn" style="display: none;" onclick="disableEditing()">Save</button>
+    </form>
+    <%- include("templates/footer") %>
+</body>
+</html>
+
