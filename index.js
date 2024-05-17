@@ -357,9 +357,9 @@ app.get('/disasterList', (req, res) => {
 });
 
 //A catch-all checklist for disasters
-app.use('/Checklist', sessionValidation);
-app.get('/Checklist', (req, res) => {
-    res.render("Checklist");
+app.use('/checklist', sessionValidation);
+app.get('/checklist', (req, res) => {
+    res.render("checklist");
 });
 //forgot password page
 app.get('/forgot-password', (req, res) => {
