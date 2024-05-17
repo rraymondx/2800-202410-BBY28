@@ -12,6 +12,7 @@ const path = require('path');
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const { Configuration, OpenAIApi } = require("openai");
+const openAIKey = process.env.OPEN_AI_KEY;
 
 //number used for encrypting passwords
 const saltRounds = 15;
@@ -105,6 +106,7 @@ async function checkDuplicateUser(username, email) {
 }
 
 //paths for files
+app.use('/js', express.static(__dirname + '/public/js'));
 app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/html', express.static(__dirname + '/public/html'));
 app.use('/img', express.static(__dirname + '/public/img'));
