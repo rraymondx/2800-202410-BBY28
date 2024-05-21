@@ -1,3 +1,19 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+.cool-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px;
+    background: linear-gradient(90deg, #00fbff, #ffffff);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+}
+
+
 /* CSS for Tsunami Page */
 body {
     margin: 0;
@@ -10,7 +26,7 @@ body {
 }
 
 .header {
-    background: linear-gradient(to right, #00416A, #E4E5E6); /* smooth horizontal gradient */
+    background: #0375bc; /* smooth horizontal gradient */
     color: white;
     text-align: center;
     padding: 0px;
