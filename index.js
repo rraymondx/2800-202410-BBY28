@@ -6,14 +6,18 @@ const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const MongoClient = require("mongodb").MongoClient;
+var ObjectId = require('mongodb').ObjectId;
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const path = require('path');
 const url = require('url');
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
+const { v4: uuid } = require('uuid');
 const { Configuration, OpenAIApi } = require("openai");
-
+const multer = require('multer');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 //number used for encrypting passwords
 const saltRounds = 15;
@@ -56,6 +60,13 @@ var mongoStore = MongoStore.create({
     crypto: {
         secret: mongodb_session_secret
     }
+});
+
+const cloudinary = require('cloudinary');
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_CLOUD_KEY,
+    api_secret: process.env.CLOUDINARY_CLOUD_SECRET
 });
 
 
@@ -331,21 +342,26 @@ app.get('/profile', async (req, res) => {
 });
 
 // Profile update
-app.post('/profileSubmit', async (req, res) => {
-    if (!req.session.authenticated) {
-        res.redirect('/login');
-        return;
-    }
-
-    const { username, email, city } = req.body;
+app.post('/profileSubmit', sessionValidation, upload.single('picture'), async (req, res) => {
+    const { username, email, city, changed } = req.body;
 
     if (!username || !email) {
         res.redirect('/profile');
         return;
     }
+    let update = {};
+    if (changed == 'true') {
+        let buf64 = req.file.buffer.toString('base64');
+        stream = await cloudinary.uploader.upload("data:image/png;base64," + buf64, function (result) { 
+            console.log(result);
+            update = { $set: { username: username, email: email, city: city, picId: result.url} };
+        }, { folder: 'profilePics' });
+        
+    } else {
+        update = { $set: { username: username, email: email, city: city } };
+    }
 
     const filter = { email: req.session.email };
-    const update = { $set: { username: username, email: email, city: city } };
 
     await userCollection.updateOne(filter, update);
 
@@ -355,55 +371,6 @@ app.post('/profileSubmit', async (req, res) => {
 
     res.redirect('/profile');
 });
-
-
-//page containing links to all disaster pages
-app.get('/disasterInfo', (req, res) => {
-    // res.render();
-});
-
-
-// //tsunami info page
-// app.use('/tsunami', sessionValidation);
-// app.get('/tsunami', (req, res) => {
-//     res.render("tsunami");
-// });
-
-
-// //avalanche info page
-// app.use('/avalanche', sessionValidation);
-// app.get('/avalanche', (req, res) => {
-//     res.render("avalanche");
-// });
-
-
-// //wildfire info page
-// app.use('/wildfire', sessionValidation);
-// app.get('/wildfire', (req, res) => {
-//     res.render('wildfire');
-// });
-
-
-// //earthquake info page
-// app.use('/earthquake', sessionValidation);
-// app.get('/earthquake', (req, res) => {
-//     res.render("earthquake");
-// });
-
-
-// //flood info page
-// app.use('/flood', sessionValidation);
-// app.get('/flood', (req, res) => {
-//     res.render('flood');
-// });
-
-
-// //Tornado Info Page
-// app.use('/tornado', sessionValidation);
-// app.get('/tornado', (req, res) => {
-//     res.render("tornado");
-// });
-
 
 //smartAI chat page
 app.get('/smartAI', (req, res) => {
@@ -481,7 +448,7 @@ app.post('/forgotPasswordSubmit', async (req, res) => {
 //reset password page
 app.get('/reset-password', async (req, res) => {
     var id = req.query.id;
-    if(!id) {
+    if (!id) {
         res.send('no id for reset password');
         return;
     }

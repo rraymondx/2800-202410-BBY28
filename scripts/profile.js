@@ -1,4 +1,5 @@
 function enableEditing() {
+    document.getElementById('picture').disabled = false;
     document.getElementById('username').disabled = false;
     document.getElementById('email').disabled = false;
     document.getElementById('city').disabled = false;
@@ -7,6 +8,7 @@ function enableEditing() {
 }
 
 function disableEditing() {
+    document.getElementById('picture').disabled = true;
     document.getElementById('username').disabled = true;
     document.getElementById('email').disabled = true;
     document.getElementById('city').disabled = true;
@@ -17,3 +19,19 @@ function disableEditing() {
 function handleFormSubmit(event) {
     enableEditing(); // Ensure fields are enabled before submitting
 }
+
+document.getElementById('picture').addEventListener('change', function(event) {
+    const imagePreview = document.getElementById('imagePreview');
+    const file = event.target.files[0];
+    document.getElementById('changed').value = true;
+    
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        imagePreview.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    } else {
+      imagePreview.src = '';
+    }
+  });

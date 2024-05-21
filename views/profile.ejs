@@ -1,7 +1,13 @@
     <%- include("templates/header") %>
 
     <h1>Profile</h1>
-    <form action="/profileSubmit" method="post" onsubmit="handleFormSubmit(event)">
+    <form action="/profileSubmit" method="post" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
+        <div>
+            <label for="picture">profile pic:</label>
+            <input type="file" id="picture" name="picture" disabled>
+            <img id="imagePreview" src="<%= user.picId %>" alt="Selected Image Preview">
+            <input type="hidden" name="changed" id="changed" value=false>
+        </div>
         <div>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" value="<%= user.username %>" disabled>
