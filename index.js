@@ -1,6 +1,6 @@
 
 //required modules
-require("./utils.js");
+require(__dirname + "/modules/utils.js");
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
@@ -122,7 +122,7 @@ async function checkDuplicateUser(username, email) {
 //allows use of photos stored in public
 app.use(express.static(__dirname + "/public"));
 // static paths for routing files
-app.use('/js', express.static(__dirname + '/public/js'));
+app.use('/js', express.static(__dirname + '/scripts'));
 app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/html', express.static(__dirname + '/public/html'));
 app.use('/img', express.static(__dirname + '/public/img'));
@@ -363,46 +363,46 @@ app.get('/disasterInfo', (req, res) => {
 });
 
 
-//tsunami info page
-app.use('/tsunami', sessionValidation);
-app.get('/tsunami', (req, res) => {
-    res.render("tsunami");
-});
+// //tsunami info page
+// app.use('/tsunami', sessionValidation);
+// app.get('/tsunami', (req, res) => {
+//     res.render("tsunami");
+// });
 
 
-//avalanche info page
-app.use('/avalanche', sessionValidation);
-app.get('/avalanche', (req, res) => {
-    res.render("avalanche");
-});
+// //avalanche info page
+// app.use('/avalanche', sessionValidation);
+// app.get('/avalanche', (req, res) => {
+//     res.render("avalanche");
+// });
 
 
-//wildfire info page
-app.use('/wildfire', sessionValidation);
-app.get('/wildfire', (req, res) => {
-    res.render('wildfire');
-});
+// //wildfire info page
+// app.use('/wildfire', sessionValidation);
+// app.get('/wildfire', (req, res) => {
+//     res.render('wildfire');
+// });
 
 
-//earthquake info page
-app.use('/earthquake', sessionValidation);
-app.get('/earthquake', (req, res) => {
-    res.render("earthquake");
-});
+// //earthquake info page
+// app.use('/earthquake', sessionValidation);
+// app.get('/earthquake', (req, res) => {
+//     res.render("earthquake");
+// });
 
 
-//flood info page
-app.use('/flood', sessionValidation);
-app.get('/flood', (req, res) => {
-    res.render('flood');
-});
+// //flood info page
+// app.use('/flood', sessionValidation);
+// app.get('/flood', (req, res) => {
+//     res.render('flood');
+// });
 
 
-//Tornado Info Page
-app.use('/tornado', sessionValidation);
-app.get('/tornado', (req, res) => {
-    res.render("tornado");
-});
+// //Tornado Info Page
+// app.use('/tornado', sessionValidation);
+// app.get('/tornado', (req, res) => {
+//     res.render("tornado");
+// });
 
 
 //smartAI chat page
@@ -417,6 +417,13 @@ app.get('/smartAI', (req, res) => {
 app.use('/disasterList', sessionValidation);
 app.get('/disasterList', (req, res) => {
     res.render("disasterList");
+});
+
+//A page for displaying specific disaster information
+app.use('/disasterList/:disasterName', sessionValidation);
+app.get('/disasterList/:disasterName', (req, res) => {
+    const disasterName = req.params.disasterName;
+    res.render("disasters/" + disasterName);
 });
 
 
