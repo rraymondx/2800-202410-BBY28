@@ -1,0 +1,88 @@
+/* CSS for Storm Page */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #193075, #8c8c8c); /* storm-like gradient */
+}
+
+.logoname {
+    color: white;
+}
+
+.header {
+    background: linear-gradient(to right, #00416A, #E4E5E6); /* smooth horizontal gradient */
+    color: white;
+    text-align: center;
+    padding: 0px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* creating depth */
+}
+
+/* Formatting of the paragraphs*/
+.content {
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: #ffffff; /* dark gray text for contrast */
+}
+
+.title {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+/*Code to center an object*/
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #000000;
+}
+
+
+/* Code for the submit button*/
+.fancy-button {
+    padding: 10px 20px; /* Padding around the text */
+    background: linear-gradient(45deg, #460c85, #666b73); /* Diagonal gradient from purple to grey */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 25px; /* Rounded corners */
+    font-size: 1.2em; /* Larger font size */
+    font-weight: bold; /* Bold font weight */
+    text-transform: uppercase; /* Uppercase text */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.fancy-button:hover {
+    background: linear-gradient(45deg, #666b73, #460c85); /* Reverse gradient on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
+}
+
+.fancy-button:active {
+    background: linear-gradient(45deg, #3f333f, #47566b); /* Darker gradient on click */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Less shadow on click */
+    transform: scale(1); /* Reset scale on click */
+}
+
+/* Basic paragraph stylings*/
+p {
+    margin: 0px;
+    background-color: rgb(30, 30, 61);
+    border-width: 2px;
+    border-style: solid;
+    border-color: #E4E5E6;
+    color: white;
+    
+}
+
+
