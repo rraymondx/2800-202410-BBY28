@@ -488,6 +488,28 @@ app.post('/resetPasswordSubmit', async (req, res) => {
     res.redirect('/login');
 });
 
+app.get('/volunteer', (req, res) => {
+    const volunteers = [
+        {
+            image: '/img/search.jpg',
+            info: 'Search And Rescue Volunteer.',
+            link: 'https://bcsara.com/volunteer/'
+        },
+        {
+            image: '/img/ems.jpg',
+            info: 'Volunteer with EMS.',
+            link: 'https://vancouver.ca/home-property-development/emergency-social-services.aspx'
+        },
+        {
+            image: '/img/disrel.jpg',
+            info: 'Join Canadian Disaster Relief.',
+            link: 'https://www.samaritanspurse.ca/getinvolved/canadian-disaster-relief/'
+        }
+    ];
+
+    res.render('volunteer', { volunteers });
+});
+
 
 //logout page, destroys session and returns to home page
 app.get('/logout', (req, res) => {

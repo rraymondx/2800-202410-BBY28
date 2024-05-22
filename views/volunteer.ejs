@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Opportunities</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <%- include("templates/header") %>
+    <div class="container">
+        <h1 class="my-4">Volunteer Opportunities</h1>
+        <div class="row">
+            <% volunteers.forEach(volunteer => { %>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="<%= volunteer.image %>" alt="Volunteer Image">
+                        <div class="card-body">
+                            <p class="card-text"><%= volunteer.info %></p>
+                            <a href="<%= volunteer.link %>" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    <%- include("templates/footer") %>
+</body>
+</html>
