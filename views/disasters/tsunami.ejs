@@ -1,6 +1,6 @@
 <%- include("../templates/header") %>
     <div class=title>
-        <h1 style="text-align: center;"><b>TSUNAMI SURVIVAL GUIDE</b></h1>
+        <h1 style="text-align: center;"><b class = "cool-title">TSUNAMI SURVIVAL GUIDE</b></h1>
     </div>
     <div class=header>
         <h2>What is a Tsunami</h2>
@@ -16,7 +16,9 @@
             "tsu" meaning "harbor" and "nami" meaning "wave."</p>
     </div>
 
-    <img src="/img/tsunami.png" alt="Tsunami" width="500px" class="center">
+    <img id = "myImage" src="/img/tsunami.png" alt="Tsunami" width="500px" class="center">
+    <audio id="myAudio" src="/audio/tsunami.mp3"></audio>
+    
 
     <br>
 
@@ -66,10 +68,25 @@
             broadcasts for updates and safety info</p>
     </div>
 
+    <div class=header>
+        <h2>Resources</h2>
+    </div>
+
+    
+    <div class = content>
+
+        Canadian Red Cross
+        <p><a href="https://www.redcross.ca/how-we-help/emergencies-and-disasters-in-canada/types-of-emergencies/tsunamis-1">https://www.redcross.ca/how-we-help/emergencies-and-disasters-in-canada/types-of-emergencies/tsunamis-1</a>
+        </p>
+    </div>
+
     <button class="fancy-button">Predict the Damage</button>
 
     <br>
 
+
+    <script src="/js/tsunami.js"></script>
+    
     <div>
         <!--This will be the section where the chat gpt info gets put into.-->
     </div>

@@ -541,7 +541,8 @@ app.get('/logout', (req, res) => {
 //404 page
 app.get('*', (req, res) => {
     res.status(404);
-    res.send("Page Not Found - 404");
+    res.render("404");
+    //res.send("Page Not Found - 404");
 });
 
 
