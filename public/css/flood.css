@@ -1,4 +1,4 @@
-/* CSS for Flood Page */
+CSS for Flood Page
 
 
 
@@ -119,4 +119,52 @@ body {
 
 .animate {
     animation-play-state: running;
+}
+
+@media only screen 
+    and (max-device-width: 428px) 
+    and (min-device-height: 926px) 
+    and (-webkit-min-device-pixel-ratio: 3)
+{
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .cool-title {
+        font-size: 32px;
+        margin-top: 30px;
+    }
+
+    .title {
+        width: 80%;
+    }
+
+    .center {
+        width: 80%;
+    }
+
+    .fancy-button {
+        width: 80%;
+    }
+
+    .content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .content dl {
+        margin-bottom: 20px; 
+    }
+    
+    .content dt {
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    
+    .content dd {
+        margin-left: 20px;
+        margin-bottom: 10px;
+        line-height: 1.5; 
+    }
 }
