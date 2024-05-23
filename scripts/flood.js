@@ -1,20 +1,21 @@
 document.addEventListener("DOMContentLoaded", function() {
     var image = document.getElementById("myHero");
     var audio = document.getElementById("myAudio");
+    var floodEffect = document.getElementById("floodEffect");
 
-    if (image && audio) {
+    if (image && audio && floodEffect) {
         image.addEventListener("click", function() {
             audio.play();
 
-            // Remove the class if it's already present to restart the animation
-            image.classList.remove('earthquake-effect');
+            // Trigger the flood effect
+            floodEffect.style.animationPlayState = 'running';
 
-            // Use setTimeout to ensure the class removal is processed before adding it back
+            // Optionally, reset the effect after some time
             setTimeout(function() {
-                image.classList.add('earthquake-effect');
-            }, 10);
+                floodEffect.style.animationPlayState = 'paused';
+            }, 5000); // 5 seconds duration
         });
     } else {
-        console.error("Image or audio element not found");
+        console.error("Image, audio, or flood effect element not found");
     }
 });

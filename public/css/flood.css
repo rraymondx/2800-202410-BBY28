@@ -72,3 +72,35 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: scale(1);
 }
+
+/* Flood effect styling */
+#floodEffect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    z-index: 1000;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 119, 190, 0.6) 10%, rgba(0, 119, 190, 0.8) 50%, rgba(0, 119, 190, 0.6) 90%, rgba(0, 0, 0, 0) 100%);
+    animation: floodAnimation 5s ease-in-out;
+    animation-play-state: paused; /* Initially paused */
+}
+
+@keyframes floodAnimation {
+    0% {
+        height: 0;
+    }
+    25% {
+        height: 25%;
+    }
+    50% {
+        height: 50%;
+    }
+    75% {
+        height: 75%;
+    }
+    100% {
+        height: 100%;
+    }
+}
