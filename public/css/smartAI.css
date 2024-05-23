@@ -1,5 +1,3 @@
-/* CSS for SmartAI Page */
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -83,3 +81,59 @@ button[type="submit"] {
     font-style: italic;
 }
 
+@media (max-width: 430px) {
+
+    body {
+        overflow: hidden;
+    }
+
+    #chat-window {
+        width: 90%;
+        margin: 0 auto;
+        padding: 15px;
+        border-radius: 15px;
+        margin-top: 20px;
+    }
+
+    #chat-messages {
+        padding: 5px;
+        margin-bottom: 10px;
+        height: calc(100vh - 300px);
+    }
+
+    #chat-form {
+        /* flex-direction: column; */
+        /* align-items: stretch; */
+        height: 100%;
+    }
+
+    #chat-input {
+        margin-right: 1;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    button[type="submit"] {
+        padding: 10px;
+        border-radius: 6px;
+        font-size: 1rem;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .user-message, .bot-message {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .user-message img, .bot-message img {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+    }
+
+    .main-title {
+        font-size: 3.5 rem;
+        margin-bottom: 0.3 rem;
+    }
+}
