@@ -1,17 +1,16 @@
-<div class="container">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <div class="col-md-4 d-flex align-items-center">
-            <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                <svg class="bi" width="30" height="24">
-                    <use xlink:href="#bootstrap"></use>
-                </svg>
-            </a>
-            <span class="mb-3 mb-md-0 text-body-secondary"><b style="color: white; text-align: center;"> 2024 ©
-                    DisasterNot
-                    inc</b></span>
-        </div>
-    </footer>
-<div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</div>
+<nav class="navbar fixed-bottom bg-dark sticky-bottom border-body" data-bs-theme="dark">
+    <div class="container-fluid">
+        <!-- <a class="navbar-brand" href="#">Fixed bottom</a> -->
+        <a href="#" onclick="goBack()"><span class="material-symbols-outlined nav-item">arrow_back</span></a>
+        <a href="/smartAI"><span class="material-symbols-outlined">smart_toy</span></a>
+        <a href="/"><span class="material-symbols-outlined nav-item">home</span></a>
+        <a href="/disasterList"><span class="material-symbols-outlined nav-item">info</span></a>
+        <a href="profile"><img src="<%=locals.picId%>" alt="Profile pic" width="32" height="32"
+                class="rounded-circle"></a>
+    </div>
+</nav>
+</div>
 </body>
+
 </html>

@@ -242,17 +242,20 @@ app.post('/signupSubmit', async (req, res) => {
 
     //hashing password
     var hashedPassword = await bcrypt.hash(password, saltRounds);
+    const defaultPicLink = "https://res.cloudinary.com/dkcuo4wib/image/upload/v1716262777/profilePics/default.png";
 
     //store info in session
     req.session.authenticated = true;
     req.session.username = username;
     req.session.email = email;
+    req.session.picId = defaultPicLink;
+    app.locals.picId = defaultPicLink;
     //get rid of the temp information
     req.session.tempInfo = undefined;
     req.session.cookie.maxAge = expireTime;
 
     //insert user in mongo database
-    await userCollection.insertOne({ username: username, email: email, password: hashedPassword });
+    await userCollection.insertOne({ username: username, email: email, password: hashedPassword, picId: defaultPicLink });
     console.log("Inserted user");
 
     //redirect to home page
@@ -283,7 +286,7 @@ app.post('/loginSubmit', async (req, res) => {
         return;
     }
 
-    const result = await userCollection.find({ email: email }).project({ email: 1, username: 1, password: 1, checkList: 1, _id: 1,  }).toArray();
+    const result = await userCollection.find({ email: email }).project({ email: 1, username: 1, password: 1, checkList: 1, picId: 1, _id: 1,  }).toArray();
 
     console.log(result);
 
@@ -300,6 +303,8 @@ app.post('/loginSubmit', async (req, res) => {
         req.session.username = result[0].username;
         req.session.email = result[0].email;
         req.session.checklist = result[0].checklist;
+        req.session.picId = result[0].picId;
+        app.locals.picId = result[0].picId;
         //get rid of the temp information
         req.session.tempInfo = undefined;
         req.session.cookie.maxAge = expireTime;
@@ -356,6 +361,8 @@ app.post('/profileSubmit', sessionValidation, upload.single('picture'), async (r
         stream = await cloudinary.uploader.upload("data:image/png;base64," + buf64, function (result) { 
             console.log(result);
             update = { $set: { username: username, email: email, city: city, picId: result.url} };
+            req.session.picId = result.url;
+            app.locals.picId = result.url;
         }, { folder: 'profilePics' });
         
     } else {
