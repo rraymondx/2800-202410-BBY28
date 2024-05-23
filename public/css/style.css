@@ -1,7 +1,7 @@
 /* CSS for All Universal Pages */
 
-.container {
-    background-color: rgb(18, 5, 71);
+nav {
+    padding-bottom: 10px;
 }
 
 body {
@@ -11,3 +11,32 @@ body {
 .text {
     color: white;
 }
+
+.material-symbols-outlined {
+    font-size: 50px;
+}
+
+html, body {
+    height: 100%;
+}
+
+.sticky-footer {
+    flex-shrink: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#page-content {
+    flex: 1 0 auto;
+}
+
+
+@media (min-width: 800px)  { 
+    .sticky-bottom {
+        display: none;
+    }
+ }

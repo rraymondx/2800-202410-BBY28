@@ -23,3 +23,9 @@
     border-style: solid;
     border-color: #414147;
 }
+
+@media (max-width: 1000px)  { 
+    .center{
+        width: 90%;
+    }
+ }

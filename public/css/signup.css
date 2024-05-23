@@ -22,7 +22,7 @@ input {
     color: #333; /* Set the input text color to black */
 }
 
-button {
+button:not(.navbar-toggler) {
     width: 100%;
     padding: 10px;
     background-color: #211a68;
