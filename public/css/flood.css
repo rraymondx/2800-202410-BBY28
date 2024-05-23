@@ -1,13 +1,27 @@
 /* CSS for Flood Page */
 
+
+
+.cool-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    background-color: white;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #00264D, #4DA6FF, #80CFFF, #B3E0FF, #8B4513);
+    background-color:  #093956;
 }
 
 .header {
-    background: linear-gradient(to right, #00264D, #4DA6FF, #80CFFF, #B3E0FF, #8B4513);
+    background-color: #2D7CB5;
+    /*background: linear-gradient(to right, #00264D, #4DA6FF, #80CFFF, #B3E0FF, #8B4513);*/
     color: white;
     text-align: center;
     padding: 0px;
@@ -21,6 +35,7 @@ body {
     padding-left: 40px;
     padding-right: 40px;
     color: #ffffff;
+    
 }
 
 .title {

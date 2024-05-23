@@ -2,11 +2,11 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #7e5b3d, #c59b72); /* earthy gradient */
+    background-color: #7e5b3d 
 }
 
 .header {
-    background: linear-gradient(to right, #4c2b15, #b89473); /* smooth horizontal gradient */
+    background-color: #4c2b15 ;/* smooth horizontal gradient */
     color: white;
     text-align: center;
     padding: 0px;

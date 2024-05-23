@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #193075, #8c8c8c); /* storm-like gradient */
+    background-color: rgb(43, 0, 76); /* storm-like gradient */
 }
 
 .logoname {
@@ -10,7 +10,7 @@ body {
 }
 
 .header {
-    background: linear-gradient(to right, #00416A, #E4E5E6); /* smooth horizontal gradient */
+    background-color:  #6400a6; /* smooth horizontal gradient */
     color: white;
     text-align: center;
     padding: 0px;

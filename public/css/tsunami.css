@@ -5,7 +5,7 @@
 .cool-title {
     font-family: 'Poppins', sans-serif;
     font-size: 48px;
-    background: linear-gradient(90deg, #00fbff, #ffffff);
+    background-color: white;
     -webkit-background-clip: text;
     color: transparent;
     text-align: center;
@@ -18,7 +18,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #2b3a67, #6aaedf); /* ocean-like gradient */
+    background-color:  #6aaedf; /* ocean-like gradient */
 }
 
 .logoname {

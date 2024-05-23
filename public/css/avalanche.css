@@ -2,7 +2,8 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #fefaff, #e9b8f9); /* ocean-like gradient */
+    background-color: #e29df9;
+    /*background: linear-gradient(to bottom, #fefaff, #e9b8f9); /* ocean-like gradient */
 }
 
 .logoname {
@@ -10,7 +11,7 @@ body {
 }
 
 .header {
-    background: linear-gradient(to right, #f3f4f5, #e29df9); /* smooth horizontal gradient */
+    background-color: #842593;
     color: white;
     text-align: center;
     padding: 0px;
@@ -22,7 +23,7 @@ body {
     padding: 10px;
     padding-left: 40px;
     padding-right: 40px;
-    color: #ffffff; /* dark gray text for contrast */
+    color: #510047; /* dark gray text for contrast */
 }
 
 .title {
