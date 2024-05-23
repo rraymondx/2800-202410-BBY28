@@ -496,9 +496,9 @@ app.get('/volunteer', (req, res) => {
             link: 'https://bcsara.com/volunteer/'
         },
         {
-            image: '/img/ems.jpg',
-            info: 'Volunteer with EMS.',
-            link: 'https://vancouver.ca/home-property-development/emergency-social-services.aspx'
+            image: '/img/StJohns.jpg',
+            info: 'Volunteer with St. John Ambulance.',
+            link: 'https://sja.ca/en/community-services'
         },
         {
             image: '/img/disrel.jpg',
