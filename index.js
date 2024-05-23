@@ -283,7 +283,7 @@ app.post('/loginSubmit', async (req, res) => {
         return;
     }
 
-    const result = await userCollection.find({ email: email }).project({ email: 1, username: 1, password: 1, _id: 1 }).toArray();
+    const result = await userCollection.find({ email: email }).project({ email: 1, username: 1, password: 1, checkList: 1, _id: 1,  }).toArray();
 
     console.log(result);
 
@@ -299,6 +299,7 @@ app.post('/loginSubmit', async (req, res) => {
         req.session.authenticated = true;
         req.session.username = result[0].username;
         req.session.email = result[0].email;
+        req.session.checklist = result[0].checklist;
         //get rid of the temp information
         req.session.tempInfo = undefined;
         req.session.cookie.maxAge = expireTime;
@@ -396,8 +397,25 @@ app.get('/disasterList/:disasterName', (req, res) => {
 
 //A catch-all checklist for disasters
 app.use('/checklist', sessionValidation);
-app.get('/checklist', (req, res) => {
-    res.render("checklist");
+app.get('/checklist', async (req, res) => {
+    const savedChecklist = req.session.checklist;
+    res.render("checklist", {savedChecklist: savedChecklist});
+});
+
+//Save checklist data
+app.post('/checklistSave', sessionValidation, async (req, res) => {
+    const checklistData  = req.body;
+    let array = [];
+    for (let i = 0; i < 10; i++) {
+        if ('item' + i in checklistData) {
+            array[i] = true;
+        } else {
+            array[i] = false;
+        }
+    }
+    req.session.checklist = array;
+    await userCollection.updateOne({email: req.session.email}, {$set: {checklist: array}});
+    res.redirect('/checklist');
 });
 
 
@@ -452,7 +470,6 @@ app.get('/reset-password', async (req, res) => {
         res.send('no id for reset password');
         return;
     }
-    //todo: check that the id of the email sent is the same as the email
     const result = await userCollection.findOne({ resetPassId: id });
     if (result == null) {
         res.send('user does not exist');
@@ -520,22 +537,6 @@ app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');
 });
-
-
-// test page
-app.get('/test', async (req, res) => {
-    var message = {
-        from: "disasternotresetpass@gmail.com",
-        to: "irfn7pouyan@gmail.com",
-        subject: "Test",
-        text: "pls work pls",
-        html: "<p>aaaaaaaaaaaaaaae</p>",
-    }
-    var info = await transporter.sendMail(message);
-    console.log(info);
-    res.send('This is a test page\n' + info);
-});
-
 
 //404 page
 app.get('*', (req, res) => {

@@ -15,70 +15,81 @@
         <h2>CHECKLIST</h2>
     </div>
     <div class="content">
+        <form action="/checklistSave" method="post" id="checklistForm" savedChecklist="<%=savedChecklist%>">
+            <input type="checkbox" id="item0" name="item0" value="Emergency kit with essential supplies">
+            <label for="item0">Emergency kit with essential supplies</label><br>
 
-        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-        <label for="vehicle1">Emergency kit with essential supplies</label><br>
+            <p>This is a catch-all for any other important supplies you may need in the event of a disaster</p>
 
-        <p>This is a catch-all for any other important supplies you may need in the event of a disaster</p>
+            <input type="checkbox" id="item1" name="item1" value="Flashlights and extra batteries">
+            <label for="item1">Flashlights and extra batteries</label><br>
 
-        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-        <label for="vehicle2">Flashlights and extra batteries</label><br>
+            <p> Since disasters can knock over power lines, you may be left without power. Flashlights allow you to see
+                if
+                the power goes out.</p>
 
-        <p> Since disasters can knock over power lines, you may be left without power. Flashlights allow you to see if
-            the power goes out.</p>
+            <input type="checkbox" id="item2" name="item2" value="First aid kit">
+            <label for="item2">First aid kit</label><br>
 
-        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-        <label for="vehicle3">First aid kit</label><br>
-
-        <p>As with many disasters, there is a high chance that someone will get injured. Securing a first aid kit is a
-            must have to disinfect, bandage, and clean injuries.</p>
-
-
-        <input type="checkbox" id="vehicle4" name="vehicle1" value="Bike">
-        <label for="vehicle4">Emergency food and water supply</label><br>
-
-        <p> Since the power may be out for long periods of time, you will need a good supply of food and water. You will
-            want to get non-perishable food such as canned goods so you can keep them in your kit for long periods of
-            time</p>
-
-        <input type="checkbox" id="vehicle5" name="vehicle2" value="Car">
-        <label for="vehicle5">Portable radio</label><br>
-
-        <p> The government may issue emergency reports and information in the days after the disaster, so a portable
-            radio will allow you to keep up with the current news</p>
-
-        <input type="checkbox" id="vehicle6" name="vehicle3" value="Boat">
-        <label for="vehicle6"> Extra clothing and blankets</label> <br>
-
-        <p> Without power, the nights may be cold. Keeping extra blankets and clothes will help you stay warm.</p>
-
-        <input type="checkbox" id="vehicle7" name="vehicle2" value="Car">
-        <label for="vehicle7">Medications and medical supplies</label><br>
-
-        <p> if anyone in your family requires medication, you should keep an emergency stash in case of an emergency.
-            You also need to keep Tylenol and Advil in this kit</p>
-        <input type="checkbox" id="vehicle8" name="vehicle3" value="Boat">
-        <label for="vehicle8">Family emergency plan</label><br>
-
-        <p> If you and your family get seperated during a disaster, it is essential to have an emergency plan and a
-            place to meet in case you get seperated.</p>
+            <p>As with many disasters, there is a high chance that someone will get injured. Securing a first aid kit is
+                a
+                must have to disinfect, bandage, and clean injuries.</p>
 
 
-        <input type="checkbox" id="vehicle9" name="vehicle1" value="Bike">
-        <label for="vehicle9">Learn evacuation routes and shelter locations</label><br>
+            <input type="checkbox" id="item3" name="item3" value="Emergency food and water supply">
+            <label for="item3">Emergency food and water supply</label><br>
 
-        <p>During an emergency, the safest option might not be to hunker down, but to evacuate the area. Knowing
-            emergency routes or safer shelter locations is crucial to surviving a disaster</p>
+            <p> Since the power may be out for long periods of time, you will need a good supply of food and water. You
+                will
+                want to get non-perishable food such as canned goods so you can keep them in your kit for long periods
+                of
+                time</p>
+
+            <input type="checkbox" id="item4" name="item4" value="Portable radio">
+            <label for="item4">Portable radio</label><br>
+
+            <p> The government may issue emergency reports and information in the days after the disaster, so a portable
+                radio will allow you to keep up with the current news</p>
+
+            <input type="checkbox" id="item5" name="item5" value="Extra clothing and blankets">
+            <label for="item5">Extra clothing and blankets</label> <br>
+
+            <p> Without power, the nights may be cold. Keeping extra blankets and clothes will help you stay warm.</p>
+
+            <input type="checkbox" id="item6" name="item6" value="Medications and medical supplies">
+            <label for="item6">Medications and medical supplies</label><br>
+
+            <p> if anyone in your family requires medication, you should keep an emergency stash in case of an
+                emergency.
+                You also need to keep Tylenol and Advil in this kit</p>
+            <input type="checkbox" id="item7" name="item7" value="Family emergency plan">
+            <label for="item7">Family emergency plan</label><br>
+
+            <p> If you and your family get seperated during a disaster, it is essential to have an emergency plan and a
+                place to meet in case you get seperated.</p>
 
 
-        <input type="checkbox" id="vehicle11" name="vehicle3" value="Boat">
-        <label for="vehicle11"> Cash and important documents</label>
+            <input type="checkbox" id="item8" name="item8" value="Learn evacuation routes and shelter locations">
+            <label for="item8">Learn evacuation routes and shelter locations</label><br>
 
-        <p> Since the power will most likely be out, many places will not be able to take debit or credit cards. Having
-            emergency cash will allow you to make purchases for whatever you need</p>
+            <p>During an emergency, the safest option might not be to hunker down, but to evacuate the area. Knowing
+                emergency routes or safer shelter locations is crucial to surviving a disaster</p>
 
-        <br>
-        <br>
+
+            <input type="checkbox" id="item9" name="item9" value="Cash and important documents">
+            <label for="item9">Cash and important documents</label>
+
+            <p> Since the power will most likely be out, many places will not be able to take debit or credit cards.
+                Having
+                emergency cash will allow you to make purchases for whatever you need</p>
+
+            <button type="submit" class="btn btn-primary" disabled>Save</button>
+
+            <br>
+            <br>
+        </form>
+
     </div>
+    <script src="/js/checklist.js"></script>
 
-<%- include("templates/footer") %>
+    <%- include("templates/footer") %>
