@@ -7,8 +7,12 @@ document.addEventListener("DOMContentLoaded", function() {
         image.addEventListener("click", function() {
             audio.play();
 
-            // Trigger the flood effect
-            floodEffect.style.animationPlayState = 'running';
+            // Reset the flood effect animation
+            floodEffect.style.animation = 'none';
+            // Trigger reflow to reset animation
+            floodEffect.offsetHeight;
+            // Restart the animation
+            floodEffect.style.animation = 'floodAnimation 5s ease-in-out';
 
             // Optionally, reset the effect after some time
             setTimeout(function() {
