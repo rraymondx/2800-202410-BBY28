@@ -510,6 +510,10 @@ app.get('/volunteer', (req, res) => {
     res.render('volunteer', { volunteers });
 });
 
+app.get('/contacts', (req, res) => {
+    res.render('contacts');
+});
+
 
 //logout page, destroys session and returns to home page
 app.get('/logout', (req, res) => {
