@@ -78,13 +78,13 @@ p {
 }
 
 .fancy-button:hover {
-    background: linear-gradient(45deg, #2575fc, #6a11cb); /* Reverse gradient on hover */
+    background: rgb(59, 40, 13); /* Reverse gradient on hover */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
     transform: scale(1.05); /* Slightly larger on hover */
 }
 
 .fancy-button:active {
-    background: linear-gradient(45deg, #5a0fa9, #1f6bda); /* Darker gradient on click */
+    background: rgb(107, 72, 27); /* Darker gradient on click */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Less shadow on click */
     transform: scale(1); /* Reset scale on click */
 }
