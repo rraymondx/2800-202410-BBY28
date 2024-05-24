@@ -91,3 +91,13 @@ dd > a{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Less shadow on click */
     transform: scale(1); /* Reset scale on click */
 }
+
+@media (max-width: 1000px)  { 
+    .content{
+        padding: 0px;
+        width: 100%;
+    }
+    #myHero {
+        width: 100%;
+    }
+ }
