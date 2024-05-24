@@ -142,6 +142,7 @@ app.use('/img', express.static(__dirname + '/public/img'));
 // root
 app.use('/', (req, res, next) => {
     var currUrl = url.parse(req.url).pathname;
+    app.locals.picId = req.session.picId;
     if (currUrl == '/') {
         app.locals.cssFile = 'index.css'
         next();

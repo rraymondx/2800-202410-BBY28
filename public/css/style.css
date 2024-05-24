@@ -16,27 +16,24 @@ body {
     font-size: 50px;
 }
 
-html, body {
-    height: 100%;
-}
-
-.sticky-footer {
-    flex-shrink: 0;
-}
-
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-#page-content {
-    flex: 1 0 auto;
-}
-
-
 @media (min-width: 800px)  { 
     .sticky-bottom {
         display: none;
+    }
+ }
+ 
+ @media (max-width: 800px) {
+    .sticky-footer {
+        flex-shrink: 0;
+    }
+    
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    #page-content {
+        flex: 1 0 auto;
     }
  }
