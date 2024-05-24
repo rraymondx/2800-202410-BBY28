@@ -287,7 +287,7 @@ app.post('/loginSubmit', async (req, res) => {
         return;
     }
 
-    const result = await userCollection.find({ email: email }).project({ email: 1, username: 1, password: 1, checkList: 1, picId: 1, _id: 1,  }).toArray();
+    const result = await userCollection.find({ email: email }).project({ email: 1, username: 1, password: 1, checklist: 1, picId: 1, _id: 1,  }).toArray();
 
     console.log(result);
 
