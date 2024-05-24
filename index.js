@@ -534,8 +534,42 @@ app.get('/volunteer', (req, res) => {
     res.render('volunteer', { volunteers });
 });
 
+
 app.get('/contacts', (req, res) => {
     res.render('contacts');
+});
+
+
+
+const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY, // Ensure the environment variable is correctly set
+});
+const openai = new OpenAIApi(configuration);
+
+app.post('/predictDamage', sessionValidation, async (req, res) => {
+    try {
+        const user = await userCollection.findOne({ email: req.session.email });
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        const city = user.city;
+        console.log(city);
+        const apiKey = process.env.OPEN_AI_KEY;
+        console.log(apiKey);
+        const openai = new OpenAIApi(new Configuration({ apiKey: apiKey }));
+
+        const completion = await openai.createCompletion({
+            model: "gpt-3.5-turbo",
+            prompt: `Predict the potential flood damage for the city of ${city}.`,
+            max_tokens: 300
+        });
+
+        res.json({ prediction: completion.data.choices[0].text });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error predicting flood damage');
+    }
 });
 
 
