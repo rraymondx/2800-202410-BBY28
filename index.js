@@ -546,13 +546,17 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
+//landing page
+app.get('/landing', (req, res) => {
+    res.render('landing');
+});
+
 //404 page
 app.get('*', (req, res) => {
     res.status(404);
     res.render("404");
     //res.send("Page Not Found - 404");
 });
-
 
 //localhost set up
 app.listen(port, () => {
