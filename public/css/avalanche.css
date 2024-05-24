@@ -87,3 +87,41 @@ p {
 }
 
 
+/* CSS for the snow effect */
+@keyframes snow {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(20px); }
+}
+
+.snow-effect {
+    animation: snow 1.5s infinite;
+}
+
+/* CSS for falling snowflakes */
+.snowflake-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* allows interaction with other elements */
+    overflow: hidden;
+    z-index: 1000; /* ensures snowflakes are on top */
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation-name: fall;
+    animation-timing-function: linear;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+}
