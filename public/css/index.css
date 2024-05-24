@@ -1,31 +1,76 @@
 /* CSS for Index Page */
 
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    overflow: hidden;
+}
+
+/* Header styles */
 .header {
-    background: linear-gradient(to right, #00416A, #150d3d); /* smooth horizontal gradient */
+    background: linear-gradient(to right, #00416A, #150d3d); 
     color: white;
     text-align: center;
-    padding: 0px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* creating depth */
+    padding: 20px 0; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+    font-size: 1.5em; 
 }
 
+/* Disaster content styles */
 .disasterContent {
-    background-image: url ("/img/tsunami.png");
-    background-color: black;
+    background-size: cover; 
+    background: linear-gradient(to bottom, lightblue, white); 
+    color: white;
+    padding: 20px; 
 }
 
-/*Code to center an object*/
+/* Light background for images */
+.lightBackground {
+    background-color: #ffffff; 
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+    margin: 20px auto;
+    max-width: 80%; 
+}
+
+/* Center an object */
 .center {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px auto; 
     width: 50%;
-    border-width: 10px;
-    border-style: solid;
-    border-color: #414147;
+    border: 10px solid #414147;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s, box-shadow 0.3s; 
 }
 
-@media (max-width: 1000px)  { 
-    .center{
+.center:hover {
+    transform: scale(1.05); 
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); 
+}
+
+/* Responsive design */
+@media (max-width: 1000px) { 
+    .center {
         width: 90%;
     }
- }
+}
+
+@media (max-width: 600px) {
+    .header {
+        font-size: 1.2em; /* Slightly smaller font on small screens */
+        padding: 15px 0; /* Adjusted padding for smaller screens */
+    }
+
+    .disasterContent {
+        padding: 15px; /* Adjusted padding for smaller screens */
+    }
+
+    .lightBackground {
+        padding: 15px; /* Adjusted padding for smaller screens */
+        max-width: 95%; /* Adjust width for smaller screens */
+    }
+}
