@@ -2,3 +2,14 @@ body {
     background: none;
     background-color: var(--bs-body-color);
 }
+
+.icon {
+    width: 15vw;
+}
+
+@media (max-width: 800px) {
+    .icon {
+        width: auto;
+        height: 20vh;
+    }
+}

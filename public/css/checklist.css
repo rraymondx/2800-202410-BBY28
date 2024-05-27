@@ -2,21 +2,22 @@
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: rgb(6, 5, 22) 
+}
+
+h1 {
+    text-align: center; 
+    font-weight: bolder; 
 }
 
 .content {
     padding: 10px;
     padding-left: 40px;
     padding-right: 40px;
-    color: #000000; /* dark gray text for contrast */
 }
 
 /* Basic paragraph stylings*/
 p {
-    
-    background-color: rgb(46, 46, 93);
+    background-color: rgb(65, 87, 148);
     margin-left: 1px;
     border-width: 2px;
     border-style: solid;
@@ -25,8 +26,8 @@ p {
     
 }
 
-.paragraph{
-    background-color: rgb(19, 19, 59);
+.content > p{
+    background-color: rgb(34, 34, 95);
     border-width: 2px;
     border-style: solid;
     border-color: #E4E5E6;
@@ -36,6 +37,7 @@ p {
 
 label{
     font-weight: bolder;
+    color: black;
 }
 
 .header {
@@ -46,6 +48,8 @@ label{
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* creating depth */
 }
 
-label {
-    color: white;
+@media (max-width: 800px) {
+    .content {
+        padding: 10px;
+    }
 }

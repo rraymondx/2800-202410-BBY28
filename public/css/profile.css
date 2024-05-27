@@ -1,9 +1,9 @@
 @import url('signup.css');
 
-h1{
-    color: white;
-}
 
 #imagePreview{
-    height: 5vw;
+    height: 15vh;
+    margin: 0 auto;
+    display: block;
+    border-radius: 50%;
 }

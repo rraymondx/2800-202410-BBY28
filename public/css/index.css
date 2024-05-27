@@ -58,9 +58,6 @@ body {
 }
 
 @media (max-width: 600px) {
-    body {
-        overflow: hidden;
-    }
     .header {
         font-size: 1.2em; /* Slightly smaller font on small screens */
         padding: 15px 0; /* Adjusted padding for smaller screens */

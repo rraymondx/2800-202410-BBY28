@@ -9,7 +9,7 @@ form {
 label {
     display: block;
     margin-bottom: 5px;
-    color: #ffffff;
+    color: black;
 }
 
 input {
@@ -30,10 +30,6 @@ button:not(.navbar-toggler) {
     border: none;
     border-radius: 3px;
     cursor: pointer;
-}
-
-a {
-    color: #4a99b8;
 }
 
 button:hover {

@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg sticky-top border-bottom border-body" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">DisasterNot</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/smartAI">Smart AI</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Disasters
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/disasterList/avalanche">Avalanche</a></li>
+                        <li><a class="dropdown-item" href="/disasterList/earthquake">Earthquake</a></li>
+                        <li><a class="dropdown-item" href="/disasterList/flood">Flood</a></li>
+                        <li><a class="dropdown-item" href="/disasterList/storm">Storm</a></li>
+                        <li><a class="dropdown-item" href="/disasterList/tornado">Tornado</a></li>
+                        <li><a class="dropdown-item" href="/disasterList/tsunami">Tsunami</a></li>
+                        <li><a class="dropdown-item" href="/disasterList/wildfire">Wildfire</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/disasterList">List</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/contacts">Contacts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/volunteer">Volunteer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/checklist">Checklist</a>
+                </li>
+            </ul>
+                <div class="dropdown">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="<%=locals.picId%>" alt="Profile pic" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small dropdown-menu-end"> <!-- Add the 'dropdown-menu-end' class here -->
+                        <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+    </div>
+</nav>

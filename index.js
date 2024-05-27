@@ -1,4 +1,3 @@
-
 //required modules
 require(__dirname + "/modules/utils.js");
 require('dotenv').config();
@@ -143,30 +142,23 @@ app.use('/img', express.static(__dirname + '/public/img'));
 app.use('/', (req, res, next) => {
     var currUrl = url.parse(req.url).pathname;
     app.locals.picId = req.session.picId;
+    app.locals.authenticated = req.session.authenticated;
     if (currUrl == '/') {
         app.locals.cssFile = 'index.css'
-        next();
-        return;
-    } else if (currUrl == '/css' || currUrl == '/html' || currUrl == '/img') {
         next();
         return;
     } else {
         const parts = currUrl.split('/');
         const lastPart = parts[parts.length - 1];
         app.locals.cssFile = lastPart + '.css';
-        // app.locals.cssFile =  cssFiles[req.url];
     }
     next();
 });
 
 
 //home page
-app.get('/', (req, res) => {
-    if (!req.session.authenticated) {
-        res.redirect("/landing");
-    } else {
+app.get('/', sessionValidation, (req, res) => {
         res.render("home");
-    }
 });
 
 
@@ -333,17 +325,12 @@ function sessionValidation(req, res, next) {
         next();
     }
     else {
-        res.redirect('/login');
+        res.redirect('/landing');
     }
 }
 
 // Profile page
-app.get('/profile', async (req, res) => {
-    if (!req.session.authenticated) {
-        res.redirect('/login');
-        return;
-    }
-
+app.get('/profile', sessionValidation, async (req, res) => {
     const user = await userCollection.findOne({ email: req.session.email });
     res.render('profile', { user: user });
 });
@@ -382,7 +369,7 @@ app.post('/profileSubmit', sessionValidation, upload.single('picture'), async (r
 });
 
 //smartAI chat page
-app.get('/smartAI', (req, res) => {
+app.get('/smartAI', sessionValidation, (req, res) => {
     // used for sending server variable to client side
     app.locals.open_ai_key = process.env.OPEN_AI_KEY;
     res.render('smartAI');
@@ -462,7 +449,7 @@ app.post('/forgotPasswordSubmit', async (req, res) => {
         subject: "Reset your password",
         // text: "pls work pls",
         //need to change this link when deploying
-        html: `<p>follow this link to reset your password: <a href='http://localhost:${process.env.PORT}/reset-password?id=${resetPassId}'>Link</a></p>`
+        html: `<p>follow this link to reset your password: <a href='https://two800-202410-bby28.onrender.com/reset-password?id=${resetPassId}'>Link</a></p>`
     }
 
     var info = await transporter.sendMail(message);
@@ -513,7 +500,7 @@ app.post('/resetPasswordSubmit', async (req, res) => {
     res.redirect('/login');
 });
 
-app.get('/volunteer', (req, res) => {
+app.get('/volunteer', sessionValidation, (req, res) => {
     const volunteers = [
         {
             image: '/img/search.jpg',
@@ -543,6 +530,7 @@ app.get('/contacts', (req, res) => {
 //logout page, destroys session and returns to home page
 app.get('/logout', (req, res) => {
     req.session.destroy();
+    // app.locals.picId = undefined;
     res.redirect('/');
 });
 

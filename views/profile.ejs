@@ -1,11 +1,11 @@
     <%- include("templates/header") %>
 
     <h1>Profile</h1>
+    <img id="imagePreview" src="<%= user.picId %>" alt="Selected Image Preview">
     <form action="/profileSubmit" method="post" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
         <div>
             <label for="picture">profile pic:</label>
             <input type="file" id="picture" name="picture" disabled>
-            <img id="imagePreview" src="<%= user.picId %>" alt="Selected Image Preview">
             <input type="hidden" name="changed" id="changed" value=false>
         </div>
         <div>
@@ -22,6 +22,7 @@
         </div>
         <button type="button" id="edit-btn" onclick="enableEditing()">Edit</button>
         <button type="submit" id="save-btn" style="display: none;" onclick="disableEditing()">Save</button>
+        <button type="button" onclick="window.location.href='/logout'";>Logout</button>
     </form>
 
     <script src="/js/profile.js"></script>

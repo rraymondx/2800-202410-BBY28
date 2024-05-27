@@ -49,3 +49,9 @@ h1, h2, h3 {
 h3 {
     margin-top: 10px;
 }
+
+@media (max-width: 800px) {
+    .content {
+        padding: 10px;
+    }
+}

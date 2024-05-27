@@ -1,15 +1,21 @@
 </div>
-<nav class="navbar fixed-bottom sticky-bottom border-body">
-    <div class="container-fluid">
-        <!-- <a class="navbar-brand" href="#">Fixed bottom</a> -->
-        <a href="#" onclick="goBack()"><span class="material-symbols-outlined nav-item">arrow_back</span></a>
-        <a href="/smartAI"><span class="material-symbols-outlined">smart_toy</span></a>
-        <a href="/"><span class="material-symbols-outlined nav-item">home</span></a>
-        <a href="/disasterList"><span class="material-symbols-outlined nav-item">info</span></a>
-        <a href="/profile"><img src="<%=locals.picId%>" alt="Profile pic" width="32" height="32"
-                class="rounded-circle"></a>
-    </div>
-</nav>
+<% if (locals.authenticated) { %>
+    <nav class="navbar fixed-bottom sticky-bottom border-body">
+        <div class="container-fluid">
+            <a href="#" onclick="goBack()"><span class="material-symbols-outlined nav-item">arrow_back</span></a>
+            <a href="/smartAI"><span class="material-symbols-outlined">smart_toy</span></a>
+            <a href="/"><span class="material-symbols-outlined nav-item">home</span></a>
+            <a href="/disasterList"><span class="material-symbols-outlined nav-item">info</span></a>
+            <a href="/profile">
+            <% if (locals.picId) { %>
+                <img src="<%=locals.picId%>" alt="Profile pic" width="32" height="32" class="rounded-circle">
+                <% } else { %>
+                    <span class="material-symbols-outlined nav-item">person</span>
+                    <% } %>
+                       </a>
+        </div>
+    </nav>
+    <% } %>
 </div>
 </body>
 
