@@ -63,6 +63,7 @@ var mongoStore = MongoStore.create({
 });
 
 const cloudinary = require('cloudinary');
+const { default: axios } = require('axios');
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_CLOUD_KEY,
@@ -540,11 +541,10 @@ app.get('/contacts', (req, res) => {
 });
 
 
-
-const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY, // Ensure the environment variable is correctly set
-});
-const openai = new OpenAIApi(configuration);
+// const configuration = new Configuration({
+//     apiKey: process.env.OPENAI_API_KEY, // Ensure the environment variable is correctly set
+// });
+// const openai = new OpenAIApi(configuration);
 
 app.post('/predictDamage', sessionValidation, async (req, res) => {
     try {
@@ -557,15 +557,31 @@ app.post('/predictDamage', sessionValidation, async (req, res) => {
         console.log(city);
         const apiKey = process.env.OPEN_AI_KEY;
         console.log(apiKey);
-        const openai = new OpenAIApi(new Configuration({ apiKey: apiKey }));
+        // const openai = new OpenAIApi(new Configuration({ apiKey: apiKey }));
 
-        const completion = await openai.createCompletion({
-            model: "gpt-3.5-turbo",
-            prompt: `Predict the potential flood damage for the city of ${city}.`,
-            max_tokens: 300
-        });
+        const response = await axios.post(
+            "https://api.openai.com/v1/chat/completions",
+            {
+                model: "gpt-3.5-turbo",
+                messages: [
+                    { role: "user", content: `Tell me the potential flood damage for the city of ${city}.` }
+                ],
+                max_tokens: 300,
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${apiKey}`,
+                },
+            }
+        );
 
-        res.json({ prediction: completion.data.choices[0].text });
+        // const completion = await openai.createCompletion({
+        //     model: "gpt-3.5-turbo",
+        //     prompt: `Predict the potential flood damage for the city of ${city}.`,
+        //     max_tokens: 300
+        // });
+        res.json({ prediction: response.data.choices[0].message.content });
     } catch (error) {
         console.error(error);
         res.status(500).send('Error predicting flood damage');
