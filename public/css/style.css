@@ -2,10 +2,11 @@
 
 nav {
     padding-bottom: 10px;
+    background-color: #333333;
 }
 
 body {
-    background-color: black;
+    background: linear-gradient(to bottom, lightblue, white);
 }
 
 .text {

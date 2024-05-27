@@ -22,7 +22,6 @@ body {
 /* Disaster content styles */
 .disasterContent {
     background-size: cover; 
-    background: linear-gradient(to bottom, lightblue, white); 
     color: white;
     padding: 20px; 
 }

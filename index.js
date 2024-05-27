@@ -163,7 +163,7 @@ app.use('/', (req, res, next) => {
 //home page
 app.get('/', (req, res) => {
     if (!req.session.authenticated) {
-        res.redirect("login");
+        res.redirect("/landing");
     } else {
         res.render("home");
     }

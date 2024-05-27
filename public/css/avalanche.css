@@ -2,8 +2,8 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background: none;
     background-color: #e29df9;
-    /*background: linear-gradient(to bottom, #fefaff, #e9b8f9); /* ocean-like gradient */
 }
 
 .logoname {

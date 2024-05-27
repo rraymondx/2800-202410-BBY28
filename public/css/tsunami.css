@@ -18,6 +18,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background: none;
     background-color:  #6aaedf; /* ocean-like gradient */
 }
 
