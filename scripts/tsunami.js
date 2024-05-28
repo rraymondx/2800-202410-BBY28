@@ -1,3 +1,5 @@
+
+//FUnction to play easter egg when image is
 document.getElementById("myImage").addEventListener("click", function() {
     var audio = document.getElementById("myAudio");
     audio.play();
