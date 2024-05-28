@@ -493,22 +493,26 @@ app.get('/volunteer', (req, res) => {
         {
             image: '/img/search.jpg',
             info: 'Search And Rescue Volunteer.',
+            summary: 'Help locate and rescue people who are lost or in distress.',
             link: 'https://bcsara.com/volunteer/'
         },
         {
             image: '/img/StJohns.jpg',
             info: 'Volunteer with St. John Ambulance.',
+            summary: 'Provide first aid and healthcare services in your community.',
             link: 'https://sja.ca/en/community-services'
         },
         {
             image: '/img/disrel.jpg',
             info: 'Join Canadian Disaster Relief.',
+            summary: 'Assist communities affected by natural disasters.',
             link: 'https://www.samaritanspurse.ca/getinvolved/canadian-disaster-relief/'
         }
     ];
 
     res.render('volunteer', { volunteers });
 });
+
 
 
 //logout page, destroys session and returns to home page
