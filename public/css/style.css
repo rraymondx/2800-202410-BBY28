@@ -9,6 +9,12 @@ body {
     background: linear-gradient(to bottom, lightblue, white);
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .text {
     color: white;
 }
