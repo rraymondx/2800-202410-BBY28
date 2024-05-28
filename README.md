@@ -1,14 +1,15 @@
-## About Us
+## 1. About Us
 Team Name: BBY-28
+Project Name: DisaterNot
 Team Members: 
 - Raymond Xie
 - Lucas Lavioeltte
 - Beck Harper
 - Pouyan Norouzi Iranzadeh	
 - Abdullah Durrani
-## Project Description
+## 2. Project Description
 BBY-28 is developing a web application, DisasterNot, to help people who are worried about how to prepare for a natural disaster, using AI to predict the damages of disasters before they happen
-## Technology Used
+## 3. Technology Used
 ### Front-end:
 - HTML
 - CSS
@@ -25,7 +26,7 @@ BBY-28 is developing a web application, DisasterNot, to help people who are worr
     - Joi
     - Mongodb
     - Cloudinary
-## Contents of Folder
+## 4. Contents of Folder
 ```
 ├── index.js
 ├── modules
@@ -33,7 +34,7 @@ BBY-28 is developing a web application, DisasterNot, to help people who are worr
 │   ├── database.js
 │   └── utils.js
 ├── package.json
-├── package-lock.json
+├── .gitignore
 ├── public
 │   ├── audio
 │   │   ├── avalanche.mp3
