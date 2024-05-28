@@ -26,6 +26,7 @@ BBY-28 is developing a web application, DisasterNot, to help people who are worr
     - Mongodb
     - Cloudinary
 ## Contents of Folder
+```
 ├── index.js
 ├── modules
 │   ├── authentication.js
@@ -137,4 +138,4 @@ BBY-28 is developing a web application, DisasterNot, to help people who are worr
 	│   ├── headerBeforeLogin.ejs
 	│   └── header.ejs
 	└── volunteer.ejs
-
+```
