@@ -24,8 +24,8 @@ BBY-28 is developing a web application, DisasterNot, to help people who are worr
     - DotENV
     - EJS
     - Joi
-    - Mongodb
-    - Cloudinary
+- Mongodb
+- Cloudinary
 ## 4. Contents of Folder
 ```
 ├── index.js
