@@ -9,12 +9,12 @@ Team Members:
 ## Project Description
 BBY-28 is developing a web application, DisasterNot, to help people who are worried about how to prepare for a natural disaster, using AI to predict the damages of disasters before they happen
 ## Technology Used
-# Front-end:
+### Front-end:
 - HTML
 - CSS
 - EJS
 - Bootstrap
-# Back-end:
+### Back-end:
 - Javascript
 - Jquery
 - Nodejs
