@@ -122,7 +122,8 @@ app.use('/', (req, res, next) => {
     app.locals.picId = req.session.picId;
     app.locals.authenticated = req.session.authenticated;
     if (currUrl == '/') {
-        app.locals.cssFile = 'index.css'
+        app.locals.cssFile = 'index.css';
+        app.locals.disasterName = undefined;
         next();
         return;
     } else {
