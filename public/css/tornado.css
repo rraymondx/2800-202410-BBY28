@@ -1,18 +1,17 @@
 /* CSS for Tornado Page */
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: none;
-    background-color:  #1abc9c;
+    background-color: #1abc9c;
 }
 
 .header {
-    background: linear-gradient(to right, #3498db, #2980b9); 
+    background: linear-gradient(to right, #3498db, #2980b9);
     color: white;
     text-align: center;
-    padding: 0; 
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5); 
+    padding: 0;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
 }
 
 .content {
@@ -46,7 +45,7 @@ dd {
     color: white;
 }
 
-dd > a {
+dd>a {
     color: #3498db;
 }
 
@@ -61,8 +60,13 @@ dd > a {
 }
 
 @keyframes tornado {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .tornado-effect {
@@ -71,17 +75,28 @@ dd > a {
 
 /* Code for the predict button*/
 .fancy-button {
-    padding: 10px 20px; /* Padding around the text */
-    background: linear-gradient(to bottom, #2c3e50, #1abc9c); /* Diagonal gradient from purple to blue */
-    color: white; /* White text color */
-    border: none; /* No border */
-    border-radius: 25px; /* Rounded corners */
-    font-size: 1.2em; /* Larger font size */
-    font-weight: bold; /* Bold font weight */
-    text-transform: uppercase; /* Uppercase text */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+    padding: 10px 20px;
+    /* Padding around the text */
+    background: linear-gradient(to bottom, #2c3e50, #1abc9c);
+    /* Diagonal gradient from purple to blue */
+    color: white;
+    /* White text color */
+    border: none;
+    /* No border */
+    border-radius: 25px;
+    /* Rounded corners */
+    font-size: 1.2em;
+    /* Larger font size */
+    font-weight: bold;
+    /* Bold font weight */
+    text-transform: uppercase;
+    /* Uppercase text */
+    cursor: pointer;
+    /* Changes cursor to pointer on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Shadow effect */
+    transition: all 0.3s ease;
+    /* Smooth transitions for hover effects */
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -89,13 +104,27 @@ dd > a {
 }
 
 .fancy-button:hover {
-    background: linear-gradient(to bottom, #192430, #138870); /* Reverse gradient on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
-    transform: scale(1.05); /* Slightly larger on hover */
+    background: linear-gradient(to bottom, #192430, #138870);
+    /* Reverse gradient on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    /* Deeper shadow on hover */
+    transform: scale(1.05);
+    /* Slightly larger on hover */
 }
 
 .fancy-button:active {
-    background: linear-gradient(to bottom, #2c3e50, #1abc9c); /* Darker gradient on click */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Less shadow on click */
-    transform: scale(1); /* Reset scale on click */
+    background: linear-gradient(to bottom, #2c3e50, #1abc9c);
+    /* Darker gradient on click */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Less shadow on click */
+    transform: scale(1);
+    /* Reset scale on click */
+}
+
+@media (max-width: 800px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
 }

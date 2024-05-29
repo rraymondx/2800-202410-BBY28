@@ -1,5 +1,4 @@
-
-
+/* CSS for Tsunami Page */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
 .cool-title {
@@ -19,7 +18,8 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: none;
-    background-color:  #6aaedf; /* ocean-like gradient */
+    background-color: #6aaedf;
+    /* ocean-like gradient */
 }
 
 .logoname {
@@ -27,11 +27,13 @@ body {
 }
 
 .header {
-    background: #0375bc; /* smooth horizontal gradient */
+    background: #0375bc;
+    /* smooth horizontal gradient */
     color: white;
     text-align: center;
     padding: 0px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* creating depth */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    /* creating depth */
 }
 
 /* Formatting of the paragraphs*/
@@ -39,7 +41,8 @@ body {
     padding: 10px;
     padding-left: 40px;
     padding-right: 40px;
-    color: #ffffff; /* dark gray text for contrast */
+    color: #ffffff;
+    /* dark gray text for contrast */
 }
 
 .title {
@@ -62,17 +65,28 @@ body {
 
 /* Code for the submit button*/
 .fancy-button {
-    padding: 10px 20px; /* Padding around the text */
-    background: linear-gradient(45deg, #6a11cb, #2575fc); /* Diagonal gradient from purple to blue */
-    color: white; /* White text color */
-    border: none; /* No border */
-    border-radius: 25px; /* Rounded corners */
-    font-size: 1.2em; /* Larger font size */
-    font-weight: bold; /* Bold font weight */
-    text-transform: uppercase; /* Uppercase text */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+    padding: 10px 20px;
+    /* Padding around the text */
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    /* Diagonal gradient from purple to blue */
+    color: white;
+    /* White text color */
+    border: none;
+    /* No border */
+    border-radius: 25px;
+    /* Rounded corners */
+    font-size: 1.2em;
+    /* Larger font size */
+    font-weight: bold;
+    /* Bold font weight */
+    text-transform: uppercase;
+    /* Uppercase text */
+    cursor: pointer;
+    /* Changes cursor to pointer on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Shadow effect */
+    transition: all 0.3s ease;
+    /* Smooth transitions for hover effects */
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -80,15 +94,21 @@ body {
 }
 
 .fancy-button:hover {
-    background: linear-gradient(45deg, #2575fc, #6a11cb); /* Reverse gradient on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
-    transform: scale(1.05); /* Slightly larger on hover */
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    /* Reverse gradient on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    /* Deeper shadow on hover */
+    transform: scale(1.05);
+    /* Slightly larger on hover */
 }
 
 .fancy-button:active {
-    background: linear-gradient(45deg, #5a0fa9, #1f6bda); /* Darker gradient on click */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Less shadow on click */
-    transform: scale(1); /* Reset scale on click */
+    background: linear-gradient(45deg, #5a0fa9, #1f6bda);
+    /* Darker gradient on click */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Less shadow on click */
+    transform: scale(1);
+    /* Reset scale on click */
 }
 
 /* Basic paragraph stylings*/
@@ -99,19 +119,44 @@ p {
     border-style: solid;
     border-color: #E4E5E6;
     color: white;
-    
+
 }
 
 
 @keyframes wave {
-    0% { transform: scale(1); }
-    20% { transform: scale(1.1); }
-    40% { transform: scale(1); }
-    60% { transform: scale(1.1); }
-    80% { transform: scale(1); }
-    100% { transform: scale(1.05); }
+    0% {
+        transform: scale(1);
+    }
+
+    20% {
+        transform: scale(1.1);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1.1);
+    }
+
+    80% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
 }
 
 .wave-effect {
     animation: wave 0.6s ease-in-out;
+}
+
+@media (max-width: 800px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
 }

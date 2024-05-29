@@ -1,5 +1,4 @@
-
-
+/* CSS for Volunteer Page */
 h1 {
     text-align: center;
     color: black;
@@ -45,4 +44,12 @@ h1 {
     margin-bottom: 15px;
     font-style: italic;
     color: #555;
+}
+
+@media (max-width: 800px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
 }

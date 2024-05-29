@@ -15,7 +15,8 @@ body {
     color: white;
     text-align: center;
     padding: 0px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* creating depth */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    /* creating depth */
 }
 
 /* Formatting of the paragraphs*/
@@ -23,7 +24,8 @@ body {
     padding: 10px;
     padding-left: 40px;
     padding-right: 40px;
-    color: #510047; /* dark gray text for contrast */
+    color: #510047;
+    /* dark gray text for contrast */
 }
 
 .title {
@@ -46,17 +48,28 @@ body {
 
 /* Code for the submit button*/
 .fancy-button {
-    padding: 10px 20px; /* Padding around the text */
-    background: linear-gradient(45deg, #c660e8, #ceb1c8); /* Diagonal gradient from purple to blue */
-    color: white; /* White text color */
-    border: none; /* No border */
-    border-radius: 25px; /* Rounded corners */
-    font-size: 1.2em; /* Larger font size */
-    font-weight: bold; /* Bold font weight */
-    text-transform: uppercase; /* Uppercase text */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+    padding: 10px 20px;
+    /* Padding around the text */
+    background: linear-gradient(45deg, #c660e8, #ceb1c8);
+    /* Diagonal gradient from purple to blue */
+    color: white;
+    /* White text color */
+    border: none;
+    /* No border */
+    border-radius: 25px;
+    /* Rounded corners */
+    font-size: 1.2em;
+    /* Larger font size */
+    font-weight: bold;
+    /* Bold font weight */
+    text-transform: uppercase;
+    /* Uppercase text */
+    cursor: pointer;
+    /* Changes cursor to pointer on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Shadow effect */
+    transition: all 0.3s ease;
+    /* Smooth transitions for hover effects */
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -64,15 +77,21 @@ body {
 }
 
 .fancy-button:hover {
-    background: linear-gradient(45deg, #ceb1c8, #c660e8); /* Reverse gradient on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
-    transform: scale(1.05); /* Slightly larger on hover */
+    background: linear-gradient(45deg, #ceb1c8, #c660e8);
+    /* Reverse gradient on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    /* Deeper shadow on hover */
+    transform: scale(1.05);
+    /* Slightly larger on hover */
 }
 
 .fancy-button:active {
-    background: linear-gradient(45deg, #9e40be, #a3849d); /* Darker gradient on click */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Less shadow on click */
-    transform: scale(1); /* Reset scale on click */
+    background: linear-gradient(45deg, #9e40be, #a3849d);
+    /* Darker gradient on click */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Less shadow on click */
+    transform: scale(1);
+    /* Reset scale on click */
 }
 
 /* Basic paragraph stylings*/
@@ -83,14 +102,19 @@ p {
     border-style: solid;
     border-color: #E4E5E6;
     color: white;
-    
+
 }
 
 
 /* CSS for the snow effect */
 @keyframes snow {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(20px); }
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(20px);
+    }
 }
 
 .snow-effect {
@@ -104,9 +128,11 @@ p {
     left: 0;
     width: 100vw;
     height: 100vh;
-    pointer-events: none; /* allows interaction with other elements */
+    pointer-events: none;
+    /* allows interaction with other elements */
     overflow: hidden;
-    z-index: 1000; /* ensures snowflakes are on top */
+    z-index: 1000;
+    /* ensures snowflakes are on top */
 }
 
 .snowflake {
@@ -122,6 +148,11 @@ p {
 }
 
 @keyframes fall {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(100vh); }
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(100vh);
+    }
 }

@@ -1,4 +1,5 @@
-body { 
+/* CSS for Landing Page */
+body {
     background: none;
     background-color: var(--bs-body-color);
 }
@@ -8,6 +9,11 @@ body {
 }
 
 @media (max-width: 800px) {
+
+    body {
+        overflow: hidden;
+    }
+
     .icon {
         width: auto;
         height: 20vh;

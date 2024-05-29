@@ -1,5 +1,4 @@
 /* CSS for Wildfire Page */
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -7,11 +6,11 @@ body {
 }
 
 .header {
-    background: linear-gradient(to right, #FF8C00, #FFA500); 
+    background: linear-gradient(to right, #FF8C00, #FFA500);
     color: white;
     text-align: center;
-    padding: 0; 
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5); 
+    padding: 0;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -35,7 +34,7 @@ p {
     border-style: solid;
     border-color: #E4E5E6;
     color: white;
-    
+
 }
 
 dd {
@@ -47,7 +46,7 @@ dd {
     color: white;
 }
 
-dd > a{
+dd>a {
     color: rgb(168, 168, 255);
 }
 
@@ -67,17 +66,28 @@ dd > a{
 
 /* Code for the predict button*/
 .fancy-button {
-    padding: 10px 20px; /* Padding around the text */
-    background: linear-gradient(45deg, #df0c0c, #e98330); /* Diagonal gradient from purple to blue */
-    color: white; /* White text color */
-    border: none; /* No border */
-    border-radius: 25px; /* Rounded corners */
-    font-size: 1.2em; /* Larger font size */
-    font-weight: bold; /* Bold font weight */
-    text-transform: uppercase; /* Uppercase text */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+    padding: 10px 20px;
+    /* Padding around the text */
+    background: linear-gradient(45deg, #df0c0c, #e98330);
+    /* Diagonal gradient from purple to blue */
+    color: white;
+    /* White text color */
+    border: none;
+    /* No border */
+    border-radius: 25px;
+    /* Rounded corners */
+    font-size: 1.2em;
+    /* Larger font size */
+    font-weight: bold;
+    /* Bold font weight */
+    text-transform: uppercase;
+    /* Uppercase text */
+    cursor: pointer;
+    /* Changes cursor to pointer on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Shadow effect */
+    transition: all 0.3s ease;
+    /* Smooth transitions for hover effects */
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -85,15 +95,21 @@ dd > a{
 }
 
 .fancy-button:hover {
-    background: linear-gradient(45deg, #e98330, #df0c0c); /* Reverse gradient on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
-    transform: scale(1.05); /* Slightly larger on hover */
+    background: linear-gradient(45deg, #e98330, #df0c0c);
+    /* Reverse gradient on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    /* Deeper shadow on hover */
+    transform: scale(1.05);
+    /* Slightly larger on hover */
 }
 
 .fancy-button:active {
-    background: linear-gradient(45deg, #FF4500, #FFA500); /* Darker gradient on click */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Less shadow on click */
-    transform: scale(1); /* Reset scale on click */
+    background: linear-gradient(45deg, #FF4500, #FFA500);
+    /* Darker gradient on click */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Less shadow on click */
+    transform: scale(1);
+    /* Reset scale on click */
 }
 
 :root {
@@ -111,13 +127,11 @@ dd > a{
 .fire::before {
     content: "";
     background-image: var(--glitter), var(--glitter),
-        linear-gradient(
-            0deg,
+        linear-gradient(0deg,
             white 0px,
             #ff8951 5px,
             #dcbc169c 30%,
-            transparent 70%
-        ),
+            transparent 70%),
         radial-gradient(ellipse at bottom, transparent 30%, black 60%);
     background-size: 350px 500px, 400px 650px, 100% 100%, 100% 100%;
     background-blend-mode: hard-light, color-dodge, multiply;
@@ -133,6 +147,7 @@ dd > a{
     0% {
         background-position: center 0px, center 0px, 50% 100%, center center;
     }
+
     100% {
         background-position: center -500px, center -650px, 50% 100%, center center;
     }
@@ -144,15 +159,25 @@ dd > a{
     overflow: hidden;
 }
 
-@media (max-width: 1000px)  { 
-    .content{
+@media (max-width: 1000px) {
+    .content {
         padding: 0px;
         width: 95%;
     }
+
     #myHero {
         width: 95%;
     }
+
     .fancy-button {
         width: 80%;
     }
- }
+}
+
+@media (max-width: 800px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+}

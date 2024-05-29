@@ -1,12 +1,11 @@
 /* CSS for Checklist Page */
-
 body {
     margin: 0;
 }
 
 h1 {
-    text-align: center; 
-    font-weight: bolder; 
+    text-align: center;
+    font-weight: bolder;
 }
 
 .content {
@@ -23,32 +22,39 @@ p {
     border-style: solid;
     border-color: #E4E5E6;
     color: white;
-    
+
 }
 
-.content > p{
+.content>p {
     background-color: rgb(34, 34, 95);
     border-width: 2px;
     border-style: solid;
     border-color: #E4E5E6;
     color: white;
-    
+
 }
 
-label{
+label {
     font-weight: bolder;
     color: black;
 }
 
 .header {
-    background: linear-gradient(to right, #00416A, #051321); /* smooth horizontal gradient */
+    background: linear-gradient(to right, #00416A, #051321);
+    /* smooth horizontal gradient */
     color: white;
     text-align: center;
     padding: 0px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* creating depth */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    /* creating depth */
 }
 
 @media (max-width: 800px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
     .content {
         padding: 10px;
     }

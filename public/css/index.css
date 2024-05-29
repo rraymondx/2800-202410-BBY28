@@ -1,5 +1,4 @@
 /* CSS for Index Page */
-
 /* General styles */
 body {
     font-family: Arial, sans-serif;
@@ -11,64 +10,74 @@ body {
 
 /* Header styles */
 .header {
-    background: linear-gradient(to right, #00416A, #150d3d); 
+    background: linear-gradient(to right, #00416A, #150d3d);
     color: white;
     text-align: center;
-    padding: 20px 0; 
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
-    font-size: 1.5em; 
+    padding: 20px 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    font-size: 1.5em;
 }
 
 /* Disaster content styles */
 .disasterContent {
-    background-size: cover; 
+    background-size: cover;
     color: white;
-    padding: 20px; 
+    padding: 20px;
 }
 
 /* Light background for images */
 .lightBackground {
-    background-color: #ffffff; 
+    background-color: #ffffff;
     padding: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
-    max-width: 80%; 
+    max-width: 80%;
 }
 
 /* Center an object */
 .center {
     display: block;
-    margin: 20px auto; 
+    margin: 20px auto;
     width: 50%;
     border: 10px solid #414147;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
-    transition: transform 0.3s, box-shadow 0.3s; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .center:hover {
-    transform: scale(1.05); 
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); 
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive design */
-@media (max-width: 1000px) { 
+@media (max-width: 1000px) {
     .center {
         width: 90%;
     }
 }
 
 @media (max-width: 600px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
     .header {
-        font-size: 1.2em; /* Slightly smaller font on small screens */
-        padding: 15px 0; /* Adjusted padding for smaller screens */
+        font-size: 1.2em;
+        /* Slightly smaller font on small screens */
+        padding: 15px 0;
+        /* Adjusted padding for smaller screens */
     }
 
     .disasterContent {
-        padding: 15px; /* Adjusted padding for smaller screens */
+        padding: 15px;
+        /* Adjusted padding for smaller screens */
     }
 
     .lightBackground {
-        padding: 15px; /* Adjusted padding for smaller screens */
-        max-width: 95%; /* Adjust width for smaller screens */
+        padding: 15px;
+        /* Adjusted padding for smaller screens */
+        max-width: 95%;
+        /* Adjust width for smaller screens */
     }
 }

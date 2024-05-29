@@ -3,22 +3,25 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: none;
-    background-color: #7e5b3d 
+    background-color: #7e5b3d
 }
 
 .header {
-    background-color: #4c2b15 ;/* smooth horizontal gradient */
+    background-color: #4c2b15;
+    /* smooth horizontal gradient */
     color: white;
     text-align: center;
     padding: 0px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* creating depth */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    /* creating depth */
 }
 
 .content {
     padding: 10px;
     padding-left: 100px;
     padding-right: 100px;
-    color: #ffffff; /* dark gray text for contrast */
+    color: #ffffff;
+    /* dark gray text for contrast */
 }
 
 .title {
@@ -29,10 +32,12 @@ body {
 
 p {
     margin: 0px;
-    background-color: #4c2b15; /* dark brown background */
+    background-color: #4c2b15;
+    /* dark brown background */
     border-width: 2px;
     border-style: solid;
-    border-color: #b89473; /* light brown border */
+    border-color: #b89473;
+    /* light brown border */
     color: white;
 }
 
@@ -47,12 +52,29 @@ p {
 }
 
 @keyframes shake {
-    0% { transform: translate(2px, 2px) rotate(0deg); }
-    20% { transform: translate(-2px, -2px) rotate(-2deg); }
-    40% { transform: translate(-4px, 0px) rotate(2deg); }
-    60% { transform: translate(4px, 4px) rotate(0deg); }
-    80% { transform: translate(2px, -2px) rotate(2deg); }
-    100% { transform: translate(2px, -4px) rotate(-2deg); }
+    0% {
+        transform: translate(2px, 2px) rotate(0deg);
+    }
+
+    20% {
+        transform: translate(-2px, -2px) rotate(-2deg);
+    }
+
+    40% {
+        transform: translate(-4px, 0px) rotate(2deg);
+    }
+
+    60% {
+        transform: translate(4px, 4px) rotate(0deg);
+    }
+
+    80% {
+        transform: translate(2px, -2px) rotate(2deg);
+    }
+
+    100% {
+        transform: translate(2px, -4px) rotate(-2deg);
+    }
 }
 
 .earthquake-effect {
@@ -61,17 +83,28 @@ p {
 
 /* Code for the submit button*/
 .fancy-button {
-    padding: 10px 20px; /* Padding around the text */
-    background: rgb(107, 72, 27); /* Diagonal gradient from purple to blue */
-    color: white; /* White text color */
-    border: none; /* No border */
-    border-radius: 25px; /* Rounded corners */
-    font-size: 1.2em; /* Larger font size */
-    font-weight: bold; /* Bold font weight */
-    text-transform: uppercase; /* Uppercase text */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+    padding: 10px 20px;
+    /* Padding around the text */
+    background: rgb(107, 72, 27);
+    /* Diagonal gradient from purple to blue */
+    color: white;
+    /* White text color */
+    border: none;
+    /* No border */
+    border-radius: 25px;
+    /* Rounded corners */
+    font-size: 1.2em;
+    /* Larger font size */
+    font-weight: bold;
+    /* Bold font weight */
+    text-transform: uppercase;
+    /* Uppercase text */
+    cursor: pointer;
+    /* Changes cursor to pointer on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Shadow effect */
+    transition: all 0.3s ease;
+    /* Smooth transitions for hover effects */
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -79,13 +112,27 @@ p {
 }
 
 .fancy-button:hover {
-    background: rgb(59, 40, 13); /* Reverse gradient on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
-    transform: scale(1.05); /* Slightly larger on hover */
+    background: rgb(59, 40, 13);
+    /* Reverse gradient on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    /* Deeper shadow on hover */
+    transform: scale(1.05);
+    /* Slightly larger on hover */
 }
 
 .fancy-button:active {
-    background: rgb(107, 72, 27); /* Darker gradient on click */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Less shadow on click */
-    transform: scale(1); /* Reset scale on click */
+    background: rgb(107, 72, 27);
+    /* Darker gradient on click */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Less shadow on click */
+    transform: scale(1);
+    /* Reset scale on click */
+}
+
+@media (max-width: 800px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
 }

@@ -1,6 +1,4 @@
 /* CSS for SignUp Page */
-
-
 /* Form styles */
 form {
     margin-top: 20px;
@@ -38,4 +36,12 @@ button:hover {
 
 .error {
     color: red;
+}
+
+@media (max-width: 800px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
 }
