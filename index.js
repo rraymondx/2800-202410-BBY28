@@ -13,6 +13,7 @@ const crypto = require("crypto");
 const multer = require('multer');
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
+const bodyParser = require('body-parser');
 
 //number used for encrypting passwords
 const saltRounds = 15;
@@ -21,14 +22,18 @@ const saltRounds = 15;
 const port = process.env.PORT || 3000;
 const app = express();
 
-//allows parsing body
-app.use(express.urlencoded({ extended: false }));
 
+
+//allows parsing of url encoded body
+app.use(express.urlencoded({ extended: false }));
+//parse json bodies
+app.use(bodyParser.json());
 
 //setup for ejs
 app.set('view engine', 'ejs');
 
 const cloudinary = require('cloudinary');
+const axios = require('axios');
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_CLOUD_KEY,
@@ -119,6 +124,12 @@ app.use('/', (req, res, next) => {
         const parts = currUrl.split('/');
         const lastPart = parts[parts.length - 1];
         app.locals.cssFile = lastPart + '.css';
+        if (parts[1] == "disasterList") {
+            app.locals.disasterName = lastPart;
+        } else {
+            app.locals.disasterName = undefined;
+        }
+        // app.locals.cssFile =  cssFiles[req.url];
     }
     next();
 });
@@ -357,10 +368,50 @@ app.get('/volunteer', sessionValidation, (req, res) => {
     res.render('volunteer', { volunteers });
 });
 
+
 app.get('/contacts', (req, res) => {
     res.render('contacts');
 });
 
+
+
+app.post('/predictDamage', async (req, res) => {
+    const { disaster } = req.body;
+    try {
+        const user = await userCollection.findOne({ email: req.session.email });
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        const city = user.city;
+        const apiKey = process.env.OPEN_AI_KEY;
+
+        const response = await axios.post(
+            "https://api.openai.com/v1/chat/completions",
+            {
+                model: "gpt-3.5-turbo",
+                messages: [
+                    { role: "system", content: `You are an expert in predicting exact damage in events of ${disaster}. Only answer with aproximate numbers. Predict casualties as well. don't use first person. Always mention that the city of the user is same as what they picked in profile. If asked to give city of undifined give the result for the province of British Columbia, Canada.` },
+
+                    { role: "user", content: `Tell me the potential ${disaster} damage for the city of ${city}.` }
+                ],
+                max_tokens: 300,
+                temperature: 0.2,
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${apiKey}`,
+                },
+            }
+        );
+
+        res.json({ prediction: response.data.choices[0].message.content });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error predicting flood damage');
+    }
+});
 
 
 //logout page, destroys session and returns to home page
