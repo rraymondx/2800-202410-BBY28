@@ -7,3 +7,9 @@
     display: block;
     border-radius: 50%;
 }
+
+input:disabled {
+    background-color: #e0e0e0;
+    color: #6c757d;
+    border: 1px solid #ced4da;
+}
