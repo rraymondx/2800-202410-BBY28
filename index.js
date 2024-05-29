@@ -35,6 +35,7 @@ app.set('view engine', 'ejs');
 
 const cloudinary = require('cloudinary');
 const axios = require('axios');
+const { error } = require('console');
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_CLOUD_KEY,
@@ -157,7 +158,7 @@ app.get('/signup', (req, res) => {
     //If an error happens an error code is sent through query
     var errorCode = req.query.error;
     //An array with String of error codes
-    var errorStrings = ["Passwords don't match", 'Invalid Username', "Invalid Email", "Invalid Password", "Something went wrong", "Username and Email already exist", "Email already exists", "Username already exists"];
+    var errorStrings = ["Passwords don't match", 'Invalid Username', "Invalid Email", "Password must be 4 to 20 Characters and contain only alpha-numeric characters", "Something went wrong", "Username and Email already exist", "Email already exists", "Username already exists"];
     //stores the temp information
     var tempInfo = req.session.tempInfo;
     res.render("signup", { error: errorStrings[errorCode], tempInfo: tempInfo });
@@ -314,37 +315,38 @@ app.post('/forgotPasswordSubmit', async (req, res) => {
 // Reset password page
 app.get('/reset-password', async (req, res) => {
     var id = req.query.id;
+    const errorCode = req.query.error;
+    const errorStrings = ["Passwords aren't equal", "Password must be 4 to 20 Characters and contain only alpha-numeric characters"];
     if (!id) {
-        res.send('no id for reset password');
+        res.render('error', {errorString: "Id could not be found"});
         return;
     }
     const result = await userCollection.findOne({ resetPassId: id });
     if (result == null) {
-        res.send('user does not exist');
+        res.render('error', {errorString: "User does not exist"});
         return;
     }
     const expireTime = result.resetPassIdExpireTime;
     if (expireTime < Date.now) {
-        res.send('link expired');
+        res.render('error', {errorString: "id time has expired"});
     }
-    console.log(expireTime);
-    res.render('resetPassword', { user: result.username });
+    res.render('resetPassword', { user: result.username, id: id, error: errorStrings[errorCode] });
 });
 
 
 // Reset password submit
 app.post('/resetPasswordSubmit', async (req, res) => {
-    var { username, newPassword, confirmPassword } = req.body;
+    var { username, newPassword, confirmPassword, id } = req.body;
     // Checks that the password is confirmed
     if (newPassword !== confirmPassword) {
-        res.send('passwords arent equal');
+        res.redirect(`/reset-password?id=${id}&error=0`);
         return;
     }
     // Validation using joi
-    const schema = Joi.string().max(20).required();
+    const schema = Joi.pattern(new RegExp('^[a-zA-Z0-9]{4,30}$')).required();
     const validationResult = schema.validate(newPassword);
     if (validationResult.error != null) {
-        res.send('bad password format');
+        res.redirect(`/reset-password?id=${id}&error=1`);
         return;
     }
     var hashedPassword = await bcrypt.hash(newPassword, saltRounds);

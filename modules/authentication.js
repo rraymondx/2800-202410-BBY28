@@ -30,9 +30,9 @@ async function signupSubmit(req, res) {
     //validation using joi
     const schema = Joi.object(
         {
-            username: Joi.string().alphanum().max(20).required(),
-            email: Joi.string().email().required(),
-            password: Joi.string().max(20).required()
+            username: Joi.string().alphanum().min(4).max(20).required(),
+            email: Joi.string().email({tlds: {allow: false}}).required(),
+            password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{4,30}$')).required()
         });
 
     const validationResult = schema.validate({ username, email, password });
@@ -99,7 +99,7 @@ async function loginSubmit (req,res) {
     //store the info in session in case user gets redirected to sign up again so info doesn't have to be reentered
     req.session.tempInfo = { email: email, password: password };
 
-    const schema = Joi.string().email().required();
+    const schema = Joi.string().email({tlds: {allow: false}}).required();
     const validationResult = schema.validate(email);
     if (validationResult.error != null) {
         //if email format is invalid
