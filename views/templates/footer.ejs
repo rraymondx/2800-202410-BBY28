@@ -7,23 +7,22 @@
             <a href="/"><span class="material-symbols-outlined nav-item">home</span></a>
             <a href="/disasterList"><span class="material-symbols-outlined nav-item">info</span></a>
             <a href="/profile">
-            <% if (locals.picId) { %>
-                <img src="<%=locals.picId%>" alt="Profile pic" width="32" height="32" class="rounded-circle">
-                <% } else { %>
-                    <span class="material-symbols-outlined nav-item">person</span>
-                    <% } %>
-                       </a>
+                <% if (locals.picId) { %>
+                    <img src="<%=locals.picId%>" alt="Profile pic" width="32" height="32" class="rounded-circle">
+                    <% } else { %>
+                        <span class="material-symbols-outlined nav-item">person</span>
+                        <% } %>
+            </a>
         </div>
     </nav>
     <% } %>
-</div>
+        </div>
 
-<% if (locals.disasterName) { %>
-    <script>
-        const disaserType = '<%= locals.disasterName %>';
-    </script>
-    <script src="/js/predictButton.js"></script>
-<% } %>
+        <% if (locals.disasterName) { %>
+            <script>
+                const disaserType = '<%= locals.disasterName %>';
+            </script>
+            <script src="/js/predictButton.js"></script>
+            <% } %>
 </body>
-
 </html>

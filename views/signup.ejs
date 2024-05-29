@@ -26,12 +26,14 @@
                                         required>
                                         <br>
                                         <% if(error) { %>
-                                            <p class="error"><%=error%></p>
+                                            <p class="error">
+                                                <%=error%>
+                                            </p>
                                             <br>
-                                                <% } %>
-                                                    <button type="submit">Submit</button>
-                                                    <a href="/login">
-                                                        <button type="button">Log in</button>
-                                                    </a>
+                                            <% } %>
+                                                <button type="submit">Submit</button>
+                                                <a href="/login">
+                                                    <button type="button">Log in</button>
+                                                </a>
     </form>
 <%- include("./templates/footer") %>

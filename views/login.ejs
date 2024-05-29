@@ -12,13 +12,12 @@
                         required><br>
                         <% if(error) { %>
                             <p class="error"><%-error%></p>
-                                <% } %>
-                                    <a href="/forgot-password">Forgot password?</a><br>
-                                    <button type="submit">Submit</button>
+                            <% } %>
+                                <a href="/forgot-password">Forgot password?</a><br>
+                                <button type="submit">Submit</button>
     </form>
 
     <a href="/signup">
         <button>Sign Up</button>
     </a>
-
 <%- include("./templates/footer") %>
