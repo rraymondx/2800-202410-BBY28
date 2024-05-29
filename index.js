@@ -297,7 +297,7 @@ app.post('/forgotPasswordSubmit', async (req, res) => {
 
     var resetPassId = crypto.randomBytes(20).toString('hex');
     var idExpireTime = Date.now() + 3600000; //1 hour expire time
-    await userCollection.updateOne({ email: email }, { $set: { resetPassId: resetPassId, resetPassIdExpireTime: idExpireTime } });
+    const user = await userCollection.findOneAndUpdate({ email: email }, { $set: { resetPassId: resetPassId, resetPassIdExpireTime: idExpireTime } });
 
     var message = {
         from: "disasternotresetpass@gmail.com",
@@ -371,11 +371,11 @@ app.post('/forgotPasswordSubmit', async (req, res) => {
         <body>
             <div class="email-container">
                 <div class="header">
-                    <img src="https://two800-202410-bby28.onrender.com/img/icon.png" alt="Your Company Logo">
+                    <img src="https://two800-202410-bby28.onrender.com/img/icon.png" alt="DisasterNot Logo">
                 </div>
                 <div class="content">
                     <h1>Reset Your Password</h1>
-                    <p>Hello,</p>
+                    <p>Hello ${user.username},</p>
                     <p>You recently requested to reset your password for your account. Click the button below to reset it.</p>
                     <div class="button-container">
                         <a href="https://two800-202410-bby28.onrender.com/reset-password?id=${resetPassId}" class="button">Reset Password</a>
