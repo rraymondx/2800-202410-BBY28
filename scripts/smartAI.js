@@ -2,6 +2,7 @@
 const form = document.getElementById("chat-form");
 const input = document.getElementById("chat-input");
 const messages = document.getElementById("chat-messages");
+var messageHistory = [{role: "system", content: "You are a chatbot helping to answer questions about natural disasters. Don't answer any question no related to natural disasers. You are called smartAI."}];
 
 form.addEventListener("submit", async (e) => {
     // to prevent any default behaviors with the event => (e)
@@ -18,17 +19,15 @@ form.addEventListener("submit", async (e) => {
     `;
 
     try {
+        messageHistory.push({role: "user", content: userMessage});
         // use axios library to make a POST request to the OpenAI API to access CHATGPT
         const response = await axios.post(
             "https://api.openai.com/v1/chat/completions",
             {
-                messages: [
-                    { role: "user", content: userMessage }
-                ],
+                messages: messageHistory,
                 model: "gpt-3.5-turbo",
-                temperature: 0,
+                temperature: 1.2,
                 max_tokens: 1000,
-                top_p: 1,
                 frequency_penalty: 0.0,
                 presence_penalty: 0.0,
             },
@@ -43,11 +42,22 @@ form.addEventListener("submit", async (e) => {
         // grabs the first response the chatgpt has for the user.
         const chatGPTResponse = response.data.choices[0].message.content;
 
+
+        const lines = chatGPTResponse.split('\n');
+
+        messageHistory.push({role: "assistant", content: chatGPTResponse});
+
+        let formattedResponse = "";
+        
+        for (let i = 0; i < lines.length; i++) {
+            formattedResponse += lines[i] + "<br>";
+        }
+
         // Add bot's response to the chat window
         messages.innerHTML +=
         `
             <div class="message bot-message">
-                <img src="./img/bot-icon.png" alt="bot icon"> <span>${chatGPTResponse}</span>
+                <img src="./img/bot-icon.png" alt="bot icon"> <span>${formattedResponse}</span>
             </div>
         `;
     } catch (error) {

@@ -11,6 +11,13 @@
     </div>
 </nav>
 </div>
+
+<% if (locals.disasterName) { %>
+    <script>
+        const disaserType = '<%= locals.disasterName %>';
+    </script>
+    <script src="/js/predictButton.js"></script>
+<% } %>
 </body>
 
 </html>
