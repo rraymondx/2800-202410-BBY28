@@ -1,5 +1,5 @@
+// Predict Damage Button Query
 var predictButton = document.querySelector(".fancy-button");
-// var disaserType = predictButton.value;
 
 if (predictButton) {
     predictButton.addEventListener("click", async function() {

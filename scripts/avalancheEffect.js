@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const avalancheImage = document.querySelector('img[alt="Avalanche"]');
     const avalancheAudio = document.getElementById('avalanche-audio');
 
+    // Play audio and trigger snow effect on image click
     avalancheImage.addEventListener('click', () => {
         avalancheAudio.play();
         avalancheImage.classList.add('snow-effect');
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 });
 
+// Function to create snowflakes and add them to the document
 function createSnowflakes() {
     const snowflakeContainer = document.createElement('div');
     snowflakeContainer.classList.add('snowflake-container');
@@ -28,7 +30,8 @@ function createSnowflakes() {
         snowflakeContainer.appendChild(snowflake);
     }
 
+    // Remove snowflakes after some time
     setTimeout(() => {
-        snowflakeContainer.remove(); // Remove snowflakes after some time
+        snowflakeContainer.remove(); 
     }, 10000); // Snowflakes last for 10 seconds
 }

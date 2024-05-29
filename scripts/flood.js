@@ -1,3 +1,4 @@
+// Flood Easter Egg
 document.addEventListener("DOMContentLoaded", function() {
     var image = document.getElementById("myHero");
     var audio = document.getElementById("myAudio");
@@ -14,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
             // Restart the animation
             floodEffect.style.animation = 'floodAnimation 5s ease-in-out';
 
-            // Optionally, reset the effect after some time
             setTimeout(function() {
                 floodEffect.style.animationPlayState = 'paused';
             }, 5000); // 5 seconds duration

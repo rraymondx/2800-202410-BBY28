@@ -1,3 +1,4 @@
+// WildFire Easter Egg
 var clicks = 0;
 
 $(function () {

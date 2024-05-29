@@ -1,3 +1,4 @@
+// Tornado Easter Egg
 document.addEventListener("DOMContentLoaded", function() {
 
     var image = document.getElementById("myImage");

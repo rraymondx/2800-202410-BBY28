@@ -1,3 +1,4 @@
+// Storm Easter Egg
 document.addEventListener('DOMContentLoaded', (event) => {
     const stormImage = document.querySelector('img[alt="Storm"]');
     const thunderAudio = document.getElementById('thunder-audio');

@@ -1,3 +1,4 @@
+// Function to check the checklist form and enable the button on change
 function checkTheList(){
     var form = $('#checklistForm');
     const savedChecklist = form.attr('savedChecklist').split(',');
@@ -13,7 +14,6 @@ function checkTheList(){
     inputs.on('change', function() {
         button[0].disabled = false;
     });
-    
 }
 
 $(checkTheList());

@@ -1,3 +1,4 @@
+// Earthquake Easter Egg
 document.addEventListener("DOMContentLoaded", function() {
     var image = document.getElementById("myImage");
     var audio = document.getElementById("myAudio");
