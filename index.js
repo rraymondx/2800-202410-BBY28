@@ -54,7 +54,7 @@ const transporter = nodemailer.createTransport({
     secure: false, // Use `true` for port 465, `false` for all other ports
     auth: {
         type: "OAuth2",
-        user: "disasternotresetpass@gmail.com",
+        user: process.env.NODEMAILER_USER,
         clientId: process.env.OAUTH_CLIENT_ID,
         clientSecret: process.env.OAUTH_CLIENT_SECRET,
         refreshToken: process.env.OAUTH_REFRESH_TOKEN,
