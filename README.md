@@ -163,6 +163,34 @@ To find our test logs, click here. https://docs.google.com/spreadsheets/d/16Qcdf
 After creating an account and logging in, you can access our features from the home page. We have a list of 7 natural disasters with information on how to be prepared in the event of one. We also have an AI chatbot that you can ask any questions you have about disasters. There is a checklist for supplies that you would need during a disaster that you can keep track of, a volunteer page that links to volunteering sites, and a profile page that you can customize.
 ## 7. Credits, References, and Licences 
 
+Libraries and Frameworks
+Node.js: JavaScript runtime used for building the back-end server.
+Express: Web framework for Node.js used to build APIs and handle routing.
+Nodemailer: Module for Node.js applications to send emails.
+DotENV: Module for loading environment variables from a .env file.
+EJS: Embedded JavaScript templating engine used for rendering HTML.
+Joi: Data validation library for JavaScript.
+Mongodb: NoSQL database used for data storage.
+Axios: Promise-based HTTP client for making requests.
+Cloudinary: Cloud-based service for managing and delivering media assets.
+Tools and Services
+OpenAI API: Used for integrating AI chatbot functionalities.
+Bootstrap: Front-end framework for developing responsive and mobile-first websites.
+Google OAuth: For authentication and authorization.
+Guidgenerator.com: For generating random GUIDs for session secrets.
+External Resources
+Node.js Documentation: For understanding and implementing Node.js functionalities.
+Express Documentation: For guidance on using Express framework.
+Nodemailer Documentation: For setting up email functionalities.
+DotENV Documentation: For managing environment variables.
+Joi Documentation: For implementing data validation.
+MongoDB Documentation: For database setup and queries.
+OpenAI API Documentation: For integrating AI capabilities.
+Axios Documentation: For making HTTP requests.
+Cloudinary Documentation: For managing media assets.
+Bootstrap Documentation: For front-end styling and responsive design.
+Google OAuth Documentation: For implementing OAuth authentication.
+
 ## 8. AI use
 - We used OpenAI API for our chatbot called smartAI.
 
