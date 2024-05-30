@@ -3,20 +3,25 @@ Team Name: BBY-28
 <br>
 Project Name: DisaterNot
 <br>
+
 Team Members: 
 - Raymond Xie
 - Lucas Lavioeltte
 - Beck Harper
 - Pouyan Norouzi Iranzadeh	
 - Abdullah Durrani
+
 ## 2. Project Description
 BBY-28 is developing a web application, DisasterNot, to help people who are worried about how to prepare for a natural disaster, using AI to predict the damages of disasters before they happen
+
 ## 3. Technology Used
+
 ### Front-end:
 - HTML
 - CSS
 - EJS
 - Bootstrap
+
 ### Back-end:
 - Javascript
 - Jquery
@@ -30,6 +35,7 @@ BBY-28 is developing a web application, DisasterNot, to help people who are worr
 - OpenAI
 - Axios
 - Cloudinary
+
 ## 4. Contents of Folder
 ```
 ├── index.js # The server side code of the app
@@ -132,7 +138,9 @@ BBY-28 is developing a web application, DisasterNot, to help people who are worr
 	│   └── header.ejs # Header of the application with important links
 	└── volunteer.ejs # Page with informtion about volunteering page
 ```
+
 ## 5. How to run project
+
 1. Download the project to your device
 2. Install nodejs from this [link](https://nodejs.org/en/download/prebuilt-installer) 
 3. Install dependencies
@@ -191,7 +199,6 @@ There is a checklist for supplies that you would need during a disaster that you
 
 - Cloudinary: Cloud-based service for managing and delivering media assets.
 
-
 ### Tools and Services
 
 - OpenAI API: Used for integrating AI chatbot functionalities.
@@ -201,7 +208,6 @@ There is a checklist for supplies that you would need during a disaster that you
 - Google OAuth: For authentication and authorization.
 
 - Guidgenerator.com: For generating random GUIDs for session secrets.
-
 
 ### External Resources
 
@@ -226,7 +232,6 @@ There is a checklist for supplies that you would need during a disaster that you
 - Bootstrap Documentation: For front-end styling and responsive design.
 
 - Google OAuth Documentation: For implementing OAuth authentication.
-
 
 ## 8. AI use
 - For our smartAI chatting robot, we used OpenAI's ChatGPT 3.5 turbo as our model.
