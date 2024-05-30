@@ -1,3 +1,4 @@
+//Enables all fields
 function enableEditing() {
     document.getElementById('picture').disabled = false;
     document.getElementById('username').disabled = false;
@@ -7,6 +8,7 @@ function enableEditing() {
     document.getElementById('save-btn').style.display = 'inline';
 }
 
+//Disables all fields
 function disableEditing() {
     document.getElementById('picture').disabled = true;
     document.getElementById('username').disabled = true;
@@ -16,10 +18,12 @@ function disableEditing() {
     document.getElementById('save-btn').style.display = 'none';
 }
 
+//Enables editting on form submit
 function handleFormSubmit(event) {
-    enableEditing(); // Ensure fields are enabled before submitting
+    enableEditing();
 }
 
+//Updates users profile picture
 document.getElementById('picture').addEventListener('change', function(event) {
     const imagePreview = document.getElementById('imagePreview');
     const file = event.target.files[0];
