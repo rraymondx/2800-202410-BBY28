@@ -25,6 +25,8 @@ BBY-28 is developing a web application, DisasterNot, to help people who are worr
     - EJS
     - Joi
 - Mongodb
+- OpenAI
+- Axios
 - Cloudinary
 ## 4. Contents of Folder
 ```
@@ -155,14 +157,23 @@ BBY-28 is developing a web application, DisasterNot, to help people who are worr
 		- CLOUDINARY_CLOUD_KEY is the key for that cloud
 		- CLOUDINARY_CLOUD_SECRET is the secret for that cloud
 5. You should be done.
+To find our test logs, click here. https://docs.google.com/spreadsheets/d/16QcdfLTzWcYJ8Do98CWHG2VD5uJnFOizjR9DY9lrKBI/edit#gid=345362433
+ 
 ## 6. How to use Product
 After creating an account and logging in, you can access our features from the home page. We have a list of 7 natural disasters with information on how to be prepared in the event of one. We also have an AI chatbot that you can ask any questions you have about disasters. There is a checklist for supplies that you would need during a disaster that you can keep track of, a volunteer page that links to volunteering sites, and a profile page that you can customize.
 ## 7. Credits, References, and Licences 
 
 ## 8. AI use
 - We used OpenAI API for our chatbot called smartAI.
-- We used the API for our prediction algorithen that tries to predict the effects of natural disasters in specific areas.
-- We used chatGPT and other ai tools to code more efficiently
-- We had some trouble setting up the API to predict natural disasters but eventualy we got it working
+
+- Most of us ended up using it for some styling suggestions for our css files. For instance, our fancy “Predic the Damage” buttons were styled with help from AI. We also used AI to debug certain parts of code that we could not figure out such as playing a sound when an image is clicked. It also made messy code into more readable code layout.
+
+-We implemented AI in 2 ways to our app. We have an AI chatbot that will answer all questions about natural disasters, and a button on each page that will predict what will happen if a natural disaster hits a city and send that info to the app.
+
+- We did not use AI to create data sets. We did not need to use data sets.
+
+-We had originally struggled to implement our “predict the damage” button on each of our disaster pages. We tried to use the city that the user had inputted and send that to the OpenAI prompt to predict what would happen if a disaster of a certain type hit their city. This proved more difficult than planned, and we had to ask each other for help to finish this feature. Luckily, after having a new set of eyes on the problem, we managed to finish it successfully. 
+
 ## 9. Contact Info
 beckharper13@gmail.com
+rraymondxie@gmail.com
