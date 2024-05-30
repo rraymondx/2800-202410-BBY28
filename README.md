@@ -1,6 +1,8 @@
 ## 1. About Us
 Team Name: BBY-28
+<br>
 Project Name: DisaterNot
+<br>
 Team Members: 
 - Raymond Xie
 - Lucas Lavioeltte
@@ -148,60 +150,100 @@ BBY-28 is developing a web application, DisasterNot, to help people who are worr
 		- MONGODB_SESSION_SECRET is a random guid genrated by a random guid generator (duh!) like https://guidgenerator.com/ (ex: ce1f9d63-283c-4aaf-9112-e400a44db8ab)
 		- NODE_SESSION_SECRET is another random guid 
 		- NODEMAILER_USER is the gmail that you use to send reset password emails (ex: disasternotresetpass@gmail.com)
-		- OAUTH_CLIENT_ID  is the client id for google api oauth if you are using gmail could be aquired from https://console.cloud.google.com/apis/credentials?authuser=4&project=disasternot&supportedpurview=project (ex: randomNumbers-randomLetters.apps.googleusercontent.com)
+		- OAUTH_CLIENT_ID  is the client id for google api oauth if you are using gmail could be aquired from [here](https://console.cloud.google.com/apis/credentials?authuser=4&project=disasternot&supportedpurview=project)
+		<br>
+		(ex: randomNumbers-randomLetters.apps.googleusercontent.com)
 		- OAUTH_CLIENT_SECRET is the client secret from the link above (ex: GOCSPX-moreStuff)
-		- OAUTH_REFRESH_TOKEN is the token used to refresh access tokens when they run out of time. get it from [here](https://developers.google.com/oauthplayground/) set the scope to https://mail.google.com/ (ex: 1//04bVXgZGJRL5ECgYIARAAGAQSNwF-moreStuff)
-		- OAUTH_ACCESS_TOKEN is the access token used to access the gmail api
-		- OPEN_AI_KEY your OpenAI API key (ex: sk-proj-moreStuff)
-		- CLOUDINARY_CLOUD_NAME is your cloud name form cloudinary get it from [here](https://cloudinary.com/users/login)
-		- CLOUDINARY_CLOUD_KEY is the key for that cloud
-		- CLOUDINARY_CLOUD_SECRET is the secret for that cloud
-5. You should be done.
-To find our test logs, click here. https://docs.google.com/spreadsheets/d/16QcdfLTzWcYJ8Do98CWHG2VD5uJnFOizjR9DY9lrKBI/edit#gid=345362433
- 
+		- OAUTH_REFRESH_TOKEN is the token used to refresh access tokens when they run out of time. Acquire it from [here](https://developers.google.com/oauthplayground/) set the scope to https://mail.google.com/ 
+		<br>
+		(ex: 1//04bVXgZGJRL5ECgYIARAAGAQSNwF-theKEY)
+		- OAUTH_ACCESS_TOKEN is the access token used to access the gmail api.
+		- OPEN_AI_KEY your OpenAI API key (ex: sk-proj-theKEY).
+		- CLOUDINARY_CLOUD_NAME is your cloud name form cloudinary get it from [here](https://cloudinary.com/users/login).
+		- CLOUDINARY_CLOUD_KEY is the key for that cloud.
+		- CLOUDINARY_CLOUD_SECRET is the secret for that cloud.
+5. You should be done if you have followed these steps correctly.
+6. To find our test logs for our application, click [here](https://docs.google.com/spreadsheets/d/16QcdfLTzWcYJ8Do98CWHG2VD5uJnFOizjR9DY9lrKBI/edit#gid=345362433).
+
 ## 6. How to use Product
 After creating an account and logging in, you can access our features from the home page. We have a list of 7 natural disasters with information on how to be prepared in the event of one. We also have an AI chatbot that you can ask any questions you have about disasters. There is a checklist for supplies that you would need during a disaster that you can keep track of, a volunteer page that links to volunteering sites, and a profile page that you can customize.
 ## 7. Credits, References, and Licences 
 
-Libraries and Frameworks
+### Libraries and Frameworks
 Node.js: JavaScript runtime used for building the back-end server.
+<br>
 Express: Web framework for Node.js used to build APIs and handle routing.
+<br>
 Nodemailer: Module for Node.js applications to send emails.
+<br>
 DotENV: Module for loading environment variables from a .env file.
+<br>
 EJS: Embedded JavaScript templating engine used for rendering HTML.
+<br>
 Joi: Data validation library for JavaScript.
+<br>
 Mongodb: NoSQL database used for data storage.
+<br>
 Axios: Promise-based HTTP client for making requests.
+<br>
 Cloudinary: Cloud-based service for managing and delivering media assets.
-Tools and Services
+<br>
+
+### Tools and Services
+
 OpenAI API: Used for integrating AI chatbot functionalities.
+<br>
 Bootstrap: Front-end framework for developing responsive and mobile-first websites.
+<br>
 Google OAuth: For authentication and authorization.
+<br>
 Guidgenerator.com: For generating random GUIDs for session secrets.
-External Resources
+<br>
+
+### External Resources
+
 Node.js Documentation: For understanding and implementing Node.js functionalities.
+<br>
 Express Documentation: For guidance on using Express framework.
+<br>
 Nodemailer Documentation: For setting up email functionalities.
+<br>
 DotENV Documentation: For managing environment variables.
+<br>
 Joi Documentation: For implementing data validation.
+<br>
 MongoDB Documentation: For database setup and queries.
+<br>
 OpenAI API Documentation: For integrating AI capabilities.
+<br>
 Axios Documentation: For making HTTP requests.
+<br>
 Cloudinary Documentation: For managing media assets.
+<br>
 Bootstrap Documentation: For front-end styling and responsive design.
+<br>
 Google OAuth Documentation: For implementing OAuth authentication.
+<br>
 
 ## 8. AI use
-- We used OpenAI API for our chatbot called smartAI.
+- For our smartAI chatting robot, we used OpenAI's ChatGPT 3.5 turbo as our model.
 
-- Most of us ended up using it for some styling suggestions for our css files. For instance, our fancy “Predic the Damage” buttons were styled with help from AI. We also used AI to debug certain parts of code that we could not figure out such as playing a sound when an image is clicked. It also made messy code into more readable code layout.
+- Most of us ended up using it for some styling suggestions for our css files. For instance, our fancy “Predic the Damage” buttons were styled with help from AI. 
+- We also used AI to debug certain parts of code that we could not figure out such as playing a sound when an image is clicked. It also made messy code into more readable code layout.
 
--We implemented AI in 2 ways to our app. We have an AI chatbot that will answer all questions about natural disasters, and a button on each page that will predict what will happen if a natural disaster hits a city and send that info to the app.
+- We implemented AI in 2 ways to our app. We have an AI chatbot that will answer all questions about natural disasters, and a button on each page that will predict what will happen if a natural disaster hits a city and send that info to the app.
 
-- We did not use AI to create data sets. We did not need to use data sets.
+- We did not use AI to create data sets, since we did not need dataset for our app.
 
--We had originally struggled to implement our “predict the damage” button on each of our disaster pages. We tried to use the city that the user had inputted and send that to the OpenAI prompt to predict what would happen if a disaster of a certain type hit their city. This proved more difficult than planned, and we had to ask each other for help to finish this feature. Luckily, after having a new set of eyes on the problem, we managed to finish it successfully. 
+- We had originally struggled to implement our “predict the damage” button on each of our disaster pages. We tried to use the city that the user had inputted and send that to the OpenAI prompt to predict what would happen if a disaster of a certain type hit their city. This proved more difficult than planned, and we had to ask each other for help to finish this feature. Luckily, after having a new set of eyes on the problem, we managed to finish it successfully. 
 
 ## 9. Contact Info
-beckharper13@gmail.com
-rraymondxie@gmail.com
+Raymond: rraymondxie@gmail.com
+<br>
+Beck: beckharper13@gmail.com
+<br>
+Lucas: lucaslaviolette05@gmail.com
+<br>
+Pouyan: irfn7pouyan@gmail.com
+<br>
+Abdullah: abdullahd08@outlook.com
